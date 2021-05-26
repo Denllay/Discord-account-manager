@@ -1,0 +1,26 @@
+.nav {
+  &_block {
+    cursor: pointer;
+    height: 50px;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    &::after {
+      content: '';
+      background-color: #ffc700;
+      display: block;
+      height: 3px;
+      width: 0%;
+      transition: width 0.5s ease-in-out;
+    }
+    &:hover:after,
+    &:focus:after {
+      width: 100%;
+    }
+  }
+  &_text {
+    text-transform: uppercase;
+  }
+}
