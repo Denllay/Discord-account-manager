@@ -11,6 +11,7 @@ interface IProps {
 
 export const UserConfigToken: React.FC<IProps> = ({ data }) => {
   const [copyAlertStatus, setCopyAlertStatus] = useState(false);
+
   const closeAlert = () => {
     setCopyAlertStatus(false);
   };

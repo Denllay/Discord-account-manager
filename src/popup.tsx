@@ -1,15 +1,19 @@
-import { ThemeProvider } from '@material-ui/core';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ThemeProvider } from '@material-ui/core';
 import { App } from './App';
-import './popup.scss';
+import { Provider } from 'react-redux';
 import { theme } from './theme';
+import { store } from './store';
+import './popup.scss';
 
 const mountNode = document.getElementById('root');
 const main = (
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </ThemeProvider>
   </React.StrictMode>
 );

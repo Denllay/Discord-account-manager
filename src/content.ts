@@ -1,2 +1,6 @@
-// This file is injected as a content script
-console.log("Hello from content script!")
+const getUserInfo = (() => {
+  const token = localStorage.getItem('token');
+  const email = localStorage.getItem('email_cache');
+
+  chrome.storage.local.set({ token, email });
+})();

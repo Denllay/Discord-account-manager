@@ -6,8 +6,16 @@ interface IProps {
   title: string;
   data: string;
 }
+const maxDataLength = 30;
 
 export const UserConfigItem: React.FC<IProps> = ({ title, data, children }) => {
+  const cutData = () => {
+    if (data.length >= maxDataLength) {
+      return data.substr(0, 20);
+    }
+    return data;
+  };
+
   const titleText = (
     <Typography variant="h2" className={styles.title}>
       {title}:
@@ -15,7 +23,7 @@ export const UserConfigItem: React.FC<IProps> = ({ title, data, children }) => {
   );
   const dataText = (
     <Typography variant="subtitle1" className={styles.data}>
-      {data}
+      {cutData()}
     </Typography>
   );
 
