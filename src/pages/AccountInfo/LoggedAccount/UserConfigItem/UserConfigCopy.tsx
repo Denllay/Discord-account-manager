@@ -1,7 +1,7 @@
 import React from 'react';
 import { ListItemIcon } from '@material-ui/core';
 import { useState } from 'react';
-import { AlertPopup } from '@/components/UIkit/AlertPopup';
+import { AlertPopup } from '@/components/UIkit/AlertPopup/AlertPopup';
 import IconCopy from '@/assets/svg/iconCopy.svg';
 import styles from './UserConfigItem.module.scss';
 
@@ -9,7 +9,7 @@ interface IProps {
   data: string;
 }
 
-export const UserConfigToken: React.FC<IProps> = ({ data }) => {
+export const UserConfigCopy: React.FC<IProps> = ({ data }) => {
   const [copyAlertStatus, setCopyAlertStatus] = useState(false);
 
   const closeAlert = () => {

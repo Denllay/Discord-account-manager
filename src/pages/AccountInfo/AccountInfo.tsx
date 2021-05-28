@@ -3,26 +3,24 @@ import { LoggedAccount } from './LoggedAccount/LoggedAccount';
 import { TAccountStatus } from '@/types/account';
 import { Unaccounted } from './Unaccounted/Unaccounted';
 import { useTypedSelector } from '@/hook/useTypedSelector';
+import { useCheckIsDicrod } from '@/hook/useCheckIsDicrod';
 
 export const AccountInfo = () => {
   const [accountStatus, setAccountStatus] = useState<TAccountStatus>('unaccounted');
   const { token } = useTypedSelector((state) => state.user);
+  const isDiscord = useCheckIsDicrod();
 
   useEffect(() => {
-    chrome.tabs.query({ active: true, lastFocusedWindow: true }, ([{ url }]) => {
-      const isDiscord = /^https:\/\/discord\.com(\/.*$)?/.test(url!);
-
-      if (isDiscord && token) {
-        setAccountStatus('loggedAccount');
-      } else {
-        setAccountStatus('unaccounted');
-      }
-    });
+    if (isDiscord && token) {
+      setAccountStatus('loggedAccount');
+    } else {
+      setAccountStatus('unaccounted');
+    }
   });
 
   const accountNodeList = {
     loggedAccount: <LoggedAccount />,
-    unaccounted: <Unaccounted />,
+    unaccounted: <Unaccounted isDiscord={isDiscord} />,
   };
 
   return accountNodeList[accountStatus];

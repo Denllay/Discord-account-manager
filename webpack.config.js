@@ -84,6 +84,14 @@ const config = {
           },
         ],
       },
+      {
+        test: /\.jpg$/,
+        use: [
+          {
+            loader: 'url-loader',
+          },
+        ],
+      },
     ],
   },
   resolve: {

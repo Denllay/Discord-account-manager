@@ -3,29 +3,28 @@ import { useState } from 'react';
 import { Navigation } from './components/Navigation/Navigation';
 import { TMenuStatus } from './types/navigation';
 import { AccountInfo } from './pages/AccountInfo/AccountInfo';
-import { Logo } from './components/Logo/Logo';
+import { ManageAccounts } from './pages/ManageAccounts/ManageAccounts';
 import { useTypedDispatch } from './hook/useAppDispatch';
-import { getUserInfo } from './store/actions/getUserInfo';
+import { getUserData } from './store/actions/getUserData';
 import styles from './App.module.scss';
 
 export const App = () => {
   const dispatch = useTypedDispatch();
-  const [activeMenu, setActiveMenu] = useState<TMenuStatus>('USER_ACCOUNT');
+  const [activeMenu, setActiveMenu] = useState<TMenuStatus>('MANAGMENT_ACCOUNTS');
 
   const menuList = {
     USER_ACCOUNT: <AccountInfo />,
-    MANAGMENT_ACCOUNTS: null,
+    MANAGMENT_ACCOUNTS: <ManageAccounts />,
   };
 
   useEffect(() => {
-    dispatch(getUserInfo());
+    dispatch(getUserData());
   }, []);
 
   return (
     <div className={styles.App}>
       <Navigation activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
       {menuList[activeMenu]}
-      <Logo />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { List } from '@material-ui/core';
 import { UserConfigItem } from './UserConfigItem/UserConfigItem';
-import { UserConfigToken } from './UserConfigItem/UserConfigToken';
+import { UserConfigCopy } from './UserConfigItem/UserConfigCopy';
 import { useTypedSelector } from '@/hook/useTypedSelector';
 
 export const LoggedAccount = () => {
@@ -22,7 +22,7 @@ export const LoggedAccount = () => {
     if (title === 'TOKEN' || title === 'EMAIL') {
       return (
         <UserConfigItem data={data} title={title} key={title}>
-          <UserConfigToken data={data} />
+          <UserConfigCopy data={data} />
         </UserConfigItem>
       );
     }

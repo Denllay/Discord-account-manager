@@ -1,5 +1,6 @@
+import { ISetUserData } from '@/types/chromeEvents';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ISetUserInfo, IUserState } from '../types/user';
+import { IUserState } from '../types/user';
 
 const initialState: IUserState = {
   token: null,
@@ -10,7 +11,7 @@ const user = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUserInfo(state, { payload }: PayloadAction<ISetUserInfo>) {
+    setUserData(state, { payload }: PayloadAction<ISetUserData>) {
       const { token, email } = payload;
 
       state.token = token;
@@ -20,4 +21,4 @@ const user = createSlice({
 });
 export default user.reducer;
 
-export const { setUserInfo } = user.actions;
+export const { setUserData } = user.actions;
