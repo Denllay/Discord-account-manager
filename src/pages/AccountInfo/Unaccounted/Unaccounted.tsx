@@ -21,7 +21,7 @@ export const Unaccounted: React.FC<IProps> = ({ isDiscord }) => {
   return (
     <div className={styles.wrapper}>
       <Typography className={styles.title} variant="h2">
-        Go to your account, bitch
+        Go to your discord account, bitch
       </Typography>
 
       {isDiscord && (

@@ -7,6 +7,7 @@ import styles from './AddUser.module.scss';
 
 export const AddUser = () => {
   const [modalStatus, setModalStatus] = useState(false);
+
   const toggleUserModal = () => {
     setModalStatus((prev) => !prev);
   };
@@ -28,7 +29,7 @@ export const AddUser = () => {
         }}
       >
         <Fade in={modalStatus}>
-          <ModalContent />
+          <ModalContent toggleModal={toggleUserModal} />
         </Fade>
       </Modal>
     </>
