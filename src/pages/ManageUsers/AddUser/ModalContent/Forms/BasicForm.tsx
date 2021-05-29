@@ -24,8 +24,8 @@ const initialValues: IFormValues = {
 };
 
 const formTokenSchema: Yup.SchemaOf<IFormValues> = Yup.object().shape({
-  password: Yup.string().required('Write your password, bitch'),
-  email: Yup.string().required('Write your email, bitch'),
+  password: Yup.string().trim('Password cannot have spaces').required('Write your password, bitch'),
+  email: Yup.string().trim('Email cannot have spaces').required('Write your email, bitch'),
   name: Yup.string().max(15, 'Allo! Maximum 15 characters'),
 });
 

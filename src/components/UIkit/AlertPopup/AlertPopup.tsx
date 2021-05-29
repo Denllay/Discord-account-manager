@@ -6,7 +6,7 @@ import { createPortal } from 'react-dom';
 
 interface IProps {
   alertStatus: boolean;
-  severity: 'success' | 'info';
+  severity: 'success' | 'info' | 'error';
   closeAlert(): void;
 }
 

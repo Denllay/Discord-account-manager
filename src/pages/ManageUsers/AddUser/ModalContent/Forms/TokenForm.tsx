@@ -5,9 +5,9 @@ import { Formik, Field, Form } from 'formik';
 import { SubmitButton } from '@/components/UIkit/Button/SubmitButton/SubmitButton';
 import { TFormStatus } from '@/types/addUser';
 import { FormInput } from '@/components/UIkit/Input/FormInput';
-import * as Yup from 'yup';
 import { useTypedDispatch } from '@/hook/useAppDispatch';
 import { addUser } from '@/store/actions/addUser';
+import * as Yup from 'yup';
 
 interface IProps {
   setFormStatus: Dispatch<SetStateAction<TFormStatus>>;
