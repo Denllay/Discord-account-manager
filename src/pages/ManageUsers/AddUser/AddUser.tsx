@@ -13,7 +13,7 @@ export const AddUser = () => {
   };
   return (
     <>
-      <ListButton background="rgba(2, 255, 58, 0.5)" onClick={toggleUserModal}>
+      <ListButton bgcolor="rgba(2, 255, 58, 0.5)" onClick={toggleUserModal}>
         <IconPlus />
       </ListButton>
       <Modal

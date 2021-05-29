@@ -12,6 +12,11 @@ export const theme = createMuiTheme({
       fontWeight: 400,
       fontSize: 18,
     },
+    h3: {
+      fontFamily: 'Rubik, sans-serif',
+      fontWeight: 400,
+      fontSize: 15,
+    },
     subtitle1: {
       fontFamily: 'Rubik, sans-serif',
       fontWeight: 300,

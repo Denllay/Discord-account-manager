@@ -3,7 +3,7 @@ import { BasicForm } from './Forms/BasicForm';
 import { ChoiceForm } from './Forms/ChoiceForm';
 import { TokenForm } from './Forms/TokenForm';
 import { useState } from 'react';
-import { TFormStatus } from '@/types/addAccount';
+import { TFormStatus } from '@/types/addUser';
 import styles from './ModalContent.module.scss';
 
 interface IProps {
@@ -15,7 +15,7 @@ export const ModalContent: React.FC<IProps> = ({ toggleModal }) => {
 
   const renderForm = () => {
     if (formStatus === 'BASIC') {
-      return <BasicForm toggleModal={toggleModal} />;
+      return <BasicForm setFormStatus={setFormStatus} toggleModal={toggleModal} />;
     }
     if (formStatus === 'TOKEN') {
       return <TokenForm setFormStatus={setFormStatus} toggleModal={toggleModal} />;

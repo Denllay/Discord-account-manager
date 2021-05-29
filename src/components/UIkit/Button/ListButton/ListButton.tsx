@@ -4,7 +4,7 @@ import styles from './ListButton.module.scss';
 interface IProps {
   onClick(): void;
   size?: ISize;
-  background: string;
+  bgcolor: string;
 }
 
 interface ISize {
@@ -12,9 +12,9 @@ interface ISize {
   height: string;
 }
 
-export const ListButton: React.FC<IProps> = ({ onClick, size, background, children }) => {
+export const ListButton: React.FC<IProps> = ({ onClick, size, bgcolor, children }) => {
   return (
-    <div className={styles.button} onClick={onClick} style={{ ...size, background }}>
+    <div className={styles.button} onClick={onClick} style={{ ...size, background: bgcolor }}>
       {children}
     </div>
   );

@@ -1,9 +1,12 @@
 export interface IUserListState {
-  list: never[] | IUserListItem[];
+  list: IUserListItem[];
 }
 
 export interface IUserListItem {
   token: string;
-  nickName: string;
+  name: string;
   email: string;
+  password: string;
 }
+
+export interface IAddUserPayload extends IUserListItem {}

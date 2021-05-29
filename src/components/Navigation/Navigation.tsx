@@ -29,19 +29,15 @@ export const Navigation: React.FC<IProps> = ({ activeMenu, setActiveMenu }) => {
 
   return (
     <Box display="flex">
-      <Box
-        style={findActiveBlock('USER_ACCOUNT')}
-        className={styles.nav_block}
-        onClick={() => setActiveMenu('USER_ACCOUNT')}
-      >
+      <Box style={findActiveBlock('USER_DATA')} className={styles.nav_block} onClick={() => setActiveMenu('USER_DATA')}>
         <Typography variant="h2" className={styles.nav_text}>
           Your fackin account
         </Typography>
       </Box>
       <Box
-        style={findActiveBlock('MANAGMENT_ACCOUNTS')}
+        style={findActiveBlock('MANAGMENT_USERS')}
         className={styles.nav_block}
-        onClick={() => setActiveMenu('MANAGMENT_ACCOUNTS')}
+        onClick={() => setActiveMenu('MANAGMENT_USERS')}
       >
         <Typography variant="h2" className={styles.nav_text}>
           Accounts management

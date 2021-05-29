@@ -11,7 +11,7 @@ const maxDataLength = 30;
 export const UserConfigItem: React.FC<IProps> = ({ title, data, children }) => {
   const cutData = () => {
     if (data.length >= maxDataLength) {
-      return data.substr(0, 20);
+      return `${data.substr(0, 20)}...`;
     }
     return data;
   };

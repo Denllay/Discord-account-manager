@@ -1,1 +1,1 @@
-export type TMenuStatus = 'USER_ACCOUNT' | 'MANAGMENT_ACCOUNTS';
+export type TMenuStatus = 'USER_DATA' | 'MANAGMENT_USERS';

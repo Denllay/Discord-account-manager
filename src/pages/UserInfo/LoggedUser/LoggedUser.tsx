@@ -4,7 +4,7 @@ import { UserConfigItem } from './UserConfigItem/UserConfigItem';
 import { UserConfigCopy } from './UserConfigItem/UserConfigCopy';
 import { useTypedSelector } from '@/hook/useTypedSelector';
 
-export const LoggedAccount = () => {
+export const LoggedUser = () => {
   const { token, email } = useTypedSelector((state) => state.user);
 
   const usertListConfig = [

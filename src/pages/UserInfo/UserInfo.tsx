@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { LoggedAccount } from './LoggedAccount/LoggedAccount';
-import { TAccountStatus } from '@/types/account';
+import { LoggedUser } from './LoggedUser/LoggedUser';
+import { TUserStatus } from '@/types/user';
 import { Unaccounted } from './Unaccounted/Unaccounted';
 import { useTypedSelector } from '@/hook/useTypedSelector';
 import { useCheckIsDicrod } from '@/hook/useCheckIsDicrod';
 
-export const AccountInfo = () => {
-  const [accountStatus, setAccountStatus] = useState<TAccountStatus>('unaccounted');
+export const UserInfo = () => {
+  const [accountStatus, setAccountStatus] = useState<TUserStatus>('UNACCOUNTED');
   const { token } = useTypedSelector((state) => state.user);
   const isDiscord = useCheckIsDicrod();
 
   useEffect(() => {
     if (isDiscord && token) {
-      setAccountStatus('loggedAccount');
+      setAccountStatus('LOGGED_USER');
     } else {
-      setAccountStatus('unaccounted');
+      setAccountStatus('UNACCOUNTED');
     }
   });
 
   const accountNodeList = {
-    loggedAccount: <LoggedAccount />,
-    unaccounted: <Unaccounted isDiscord={isDiscord} />,
+    LOGGED_USER: <LoggedUser />,
+    UNACCOUNTED: <Unaccounted isDiscord={isDiscord} />,
   };
 
   return accountNodeList[accountStatus];

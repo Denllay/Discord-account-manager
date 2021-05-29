@@ -2,8 +2,8 @@ import React from 'react';
 import { Typography, Box, Button } from '@material-ui/core';
 import { useTypedDispatch } from '@/hook/useAppDispatch';
 import { getUserData } from '@/store/actions/getUserData';
-import styles from './Unaccounted.module.scss';
 import { useGetCurrentTab } from '@/hook/useGetCurrentTab';
+import styles from './Unaccounted.module.scss';
 
 interface IProps {
   isDiscord: boolean;

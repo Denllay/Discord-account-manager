@@ -1,6 +1,6 @@
 import React, { SetStateAction } from 'react';
 import { Typography, Box, Button } from '@material-ui/core';
-import { TFormStatus } from '@/types/addAccount';
+import { TFormStatus } from '@/types/addUser';
 import { Dispatch } from 'react';
 
 interface IProps {
@@ -10,7 +10,9 @@ interface IProps {
 export const ChoiceForm: React.FC<IProps> = ({ setFormStatus }) => {
   return (
     <>
-      <Typography variant="h1">Add account</Typography>
+      <Box display="flex" justifyContent="center">
+        <Typography variant="h1">Add account</Typography>
+      </Box>
 
       <Box display="flex" flexDirection="column" alignItems="center" mt={6}>
         <Typography variant="subtitle1">Select option to authorization</Typography>
