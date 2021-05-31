@@ -10,13 +10,13 @@ import styles from './App.module.scss';
 
 export const App = () => {
   const dispatch = useTypedDispatch();
-  const [activePage, setActivePage] = useState<TMenuPages>('USER_DATA');
+  const [activePage, setActivePage] = useState<TMenuPages>('USER_INFO');
 
   const renderMenu = () => {
     if (activePage === 'MANAGMENT_USERS') {
       return <ManageUsers />;
     }
-    if (activePage === 'USER_DATA') {
+    if (activePage === 'USER_INFO') {
       return <UserInfo />;
     }
     return null;

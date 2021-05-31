@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ListItemIcon } from '@material-ui/core';
 import { useState } from 'react';
 import { AlertPopup } from '@/components/UIkit/AlertPopup/AlertPopup';
@@ -25,7 +25,7 @@ export const UserConfigCopy: React.FC<IProps> = ({ data }) => {
         <IconCopy style={{ cursor: 'pointer' }} onClick={onClickCopyToken} />
       </ListItemIcon>
 
-      <AlertPopup alertStatus={copyAlertStatus} severity="success" closeAlert={closeAlert}>
+      <AlertPopup alertStatus={copyAlertStatus} severity="success" onClose={closeAlert}>
         Sucsess copy!
       </AlertPopup>
     </>

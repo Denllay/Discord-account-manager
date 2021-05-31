@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Typography, Button } from '@material-ui/core';
-import { AlertPopup } from '@/components/UIkit/AlertPopup/AlertPopup';
+import { CopyPopup } from '@/components/UIkit/CopyPopup/CopyPopup';
 import IconCopy from '@/assets/svg/iconCopy.svg';
 import styles from './UserDataItem.module.scss';
 
@@ -11,7 +11,6 @@ interface IProps {
 
 export const UserDataItem: React.FC<IProps> = ({ data, title }) => {
   const [copyAlertStatus, setCopyAlertStatus] = useState(false);
-  const [errorAlertStatus, setErrorAlertStatus] = useState(false);
 
   const formatData = data.length >= 15 ? `${data.substr(0, 15)}...` : data;
 
@@ -19,17 +18,8 @@ export const UserDataItem: React.FC<IProps> = ({ data, title }) => {
     setCopyAlertStatus(false);
   };
 
-  const closeErrorAlert = () => {
-    setErrorAlertStatus(false);
-  };
-
   const onClickCopyData = () => {
-    if (data !== '-') {
-      navigator.clipboard.writeText(data);
-      setCopyAlertStatus(true);
-    } else {
-      setErrorAlertStatus(true);
-    }
+    setCopyAlertStatus(true);
   };
 
   return (
@@ -46,13 +36,7 @@ export const UserDataItem: React.FC<IProps> = ({ data, title }) => {
         <Typography variant="subtitle1">{formatData}</Typography>
       </Box>
 
-      <AlertPopup alertStatus={copyAlertStatus} severity="success" closeAlert={closeCopyAlert}>
-        Sucsess copy!
-      </AlertPopup>
-
-      <AlertPopup alertStatus={errorAlertStatus} severity="error" closeAlert={closeErrorAlert}>
-        This field is empty!
-      </AlertPopup>
+      <CopyPopup copyData={data} copyStatus={copyAlertStatus} onClose={closeCopyAlert} />
     </>
   );
 };

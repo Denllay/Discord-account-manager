@@ -1,4 +1,4 @@
-export type TMenuPages = 'USER_DATA' | 'MANAGMENT_USERS' | 'ABOUT_INFO';
+export type TMenuPages = 'USER_INFO' | 'MANAGMENT_USERS' | 'ABOUT_INFO';
 export interface IStyledTabsProps {
   value: TMenuPages;
   onChange: TOnchangeTab;

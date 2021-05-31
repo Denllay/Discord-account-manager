@@ -18,10 +18,15 @@ export const UserInfo = () => {
     }
   });
 
-  const accountNodeList = {
-    LOGGED_USER: <LoggedUser />,
-    UNACCOUNTED: <Unaccounted isDiscord={isDiscord} />,
+  const renderInfoByStatus = () => {
+    if (accountStatus === 'LOGGED_USER') {
+      return <LoggedUser />;
+    }
+    if (accountStatus === 'UNACCOUNTED') {
+      return <Unaccounted isDiscord={isDiscord} />;
+    }
+    return null;
   };
 
-  return accountNodeList[accountStatus];
+  return renderInfoByStatus();
 };

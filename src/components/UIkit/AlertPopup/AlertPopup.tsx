@@ -7,7 +7,7 @@ import { createPortal } from 'react-dom';
 interface IProps {
   alertStatus: boolean;
   severity: 'success' | 'info' | 'error';
-  closeAlert(): void;
+  onClose(): void;
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -21,13 +21,13 @@ const useStyles = makeStyles((theme) => ({
 
 const closePopupDuration = 3000;
 
-export const AlertPopup: React.FC<IProps> = ({ children, alertStatus, severity, closeAlert }) => {
+export const AlertPopup: React.FC<IProps> = ({ children, alertStatus, severity, onClose }) => {
   const parentDiv = useRef(null);
   const classes = useStyles();
   const el = useMemo(() => document.createElement('div'), []);
 
   const closePopup = () => {
-    closeAlert();
+    onClose();
     removeParendDiv();
   };
 
