@@ -4,8 +4,8 @@ import { TCopyAlertMode } from '@/types/copyPopup';
 
 interface IProps {
   copyStatus: boolean;
-  onClose(): void;
   copyData: string;
+  onClose(): void;
 }
 
 export const CopyPopup: React.FC<IProps> = ({ copyData, copyStatus, onClose }) => {
@@ -13,13 +13,13 @@ export const CopyPopup: React.FC<IProps> = ({ copyData, copyStatus, onClose }) =
   const copyTitleByMode = alertMode === 'success' ? 'Sucsess copy!' : 'Empty field!';
 
   useEffect(() => {
-    if (copyData === '-') {
-      setAlertMode('error');
-    } else {
+    if (copyData !== '-' && copyStatus) {
       navigator.clipboard.writeText(copyData);
       setAlertMode('success');
+    } else {
+      setAlertMode('error');
     }
-  }, [copyData]);
+  }, [copyData, copyStatus]);
 
   return (
     alertMode && (

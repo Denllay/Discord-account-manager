@@ -23,7 +23,7 @@ export const UserInfo = () => {
       return <LoggedUser />;
     }
     if (accountStatus === 'UNACCOUNTED') {
-      return <Unaccounted isDiscord={isDiscord} />;
+      return <Unaccounted />;
     }
     return null;
   };

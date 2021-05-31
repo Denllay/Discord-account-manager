@@ -43,13 +43,18 @@ export const UserMoreData: React.FC<IProps> = ({ data }) => {
         <Box display="flex" flexDirection="column" position="relative" mb={2}>
           {renderListUserData}
         </Box>
+
         <Box>
           <Button color="secondary" onClick={onDeleteUser}>
-            <Typography variant="h2">DELETE ACCOUNT</Typography>
+            <Typography color="error" variant="h2">
+              DELETE ACCOUNT
+            </Typography>
           </Button>
 
           <Button>
-            <Typography variant="h2">CHANGE DATA</Typography>
+            <Typography color="secondary" variant="h2">
+              CHANGE DATA
+            </Typography>
           </Button>
         </Box>
       </Box>

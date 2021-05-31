@@ -1,36 +1,23 @@
 import React, { useState } from 'react';
-import { Modal, Fade, Backdrop } from '@material-ui/core';
 import { ListButton } from '@/components/UIkit/Button/ListButton/ListButton';
-import { ModalContent } from './ModalContent/ModalContent';
+import { Modal } from '@/components/UIkit/Modal/Modal';
+import { AddUserModal } from './AddUserModal';
 import IconPlus from '@/assets/svg/iconPlus.svg';
-import styles from './AddUser.module.scss';
 
 export const AddUser = () => {
   const [modalStatus, setModalStatus] = useState(false);
 
-  const toggleUserModal = () => {
+  const toggleModal = () => {
     setModalStatus((prev) => !prev);
   };
   return (
     <>
-      <ListButton bgcolor="rgba(2, 255, 58, 0.5)" onClick={toggleUserModal}>
+      <ListButton bgcolor="rgba(2, 255, 58, 0.5)" onClick={toggleModal}>
         <IconPlus />
       </ListButton>
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={styles.modal}
-        open={modalStatus}
-        onClose={toggleUserModal}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={modalStatus}>
-          <ModalContent toggleModal={toggleUserModal} />
-        </Fade>
+
+      <Modal width="400px" height="320px" statusModal={modalStatus} toggleModal={toggleModal}>
+        <AddUserModal toggleModal={toggleModal} />
       </Modal>
     </>
   );

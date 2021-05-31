@@ -1,35 +1,10 @@
 import React from 'react';
-import { Typography, Box, Button } from '@material-ui/core';
-import { useTypedDispatch } from '@/hook/useAppDispatch';
-import { getUserData } from '@/store/actions/getUserData';
-import { useGetCurrentTab } from '@/hook/useGetCurrentTab';
-import styles from './Unaccounted.module.scss';
+import { Typography, Box } from '@material-ui/core';
 
-interface IProps {
-  isDiscord: boolean;
-}
-
-export const Unaccounted: React.FC<IProps> = ({ isDiscord }) => {
-  const dispatch = useTypedDispatch();
-
-  const onClickReloadPage = async () => {
-    const { id } = await useGetCurrentTab();
-    chrome.tabs.reload(id!);
-    dispatch(getUserData());
-  };
-
+export const Unaccounted = () => {
   return (
-    <div className={styles.wrapper}>
-      <Typography variant="h2">Go to your discord account, bitch</Typography>
-
-      {isDiscord && (
-        <Box>
-          <Typography variant="subtitle1">Are you already in an account?</Typography>
-          <Button variant="outlined" size="small" onClick={onClickReloadPage}>
-            Reload
-          </Button>
-        </Box>
-      )}
-    </div>
+    <Box height="100%" display="flex" justifyContent="center" alignItems="center" bgcolor="#f5f5f5">
+      <Typography variant="h1">Discord is not available</Typography>
+    </Box>
   );
 };
