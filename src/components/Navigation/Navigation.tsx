@@ -1,48 +1,39 @@
 import React, { SetStateAction } from 'react';
-import { Box, Typography } from '@material-ui/core';
+import { Box, Tabs, Tab, Typography, withStyles } from '@material-ui/core';
+import { IStyledTabsProps, TMenuPages, TOnchangeTab } from '@/types/navigation';
+import { NavTab } from './NavTab';
 import { Dispatch } from 'react';
-import { TMenuStatus } from '@/types/navigation';
-
-import styles from './Navigation.module.scss';
 
 interface IProps {
-  activeMenu: TMenuStatus;
-  setActiveMenu: Dispatch<SetStateAction<TMenuStatus>>;
+  activePage: TMenuPages;
+  setActivePage: Dispatch<SetStateAction<TMenuPages>>;
 }
 
-const activeBlockStyle: React.CSSProperties = {
-  background: '#ffc700',
-  color: '#fff',
-};
-const notActiveBlockStyle: React.CSSProperties = {
-  background: '#212121',
-  color: '#ffc700',
-};
+const NavTabs = withStyles({
+  indicator: {
+    display: 'flex',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+    '& > span': {
+      height: '2px',
+      width: '100%',
+      backgroundColor: '#FFC700',
+    },
+  },
+})((props: IStyledTabsProps) => <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />);
 
-export const Navigation: React.FC<IProps> = ({ activeMenu, setActiveMenu }) => {
-  const findActiveBlock = (menuStatus: TMenuStatus) => {
-    if (activeMenu === menuStatus) {
-      return activeBlockStyle;
-    }
-    return notActiveBlockStyle;
+export const Navigation: React.FC<IProps> = ({ activePage, setActivePage }) => {
+  const onChangePage: TOnchangeTab = (_, newPage) => {
+    setActivePage(newPage);
   };
 
   return (
-    <Box display="flex">
-      <Box style={findActiveBlock('USER_DATA')} className={styles.nav_block} onClick={() => setActiveMenu('USER_DATA')}>
-        <Typography variant="h2" className={styles.nav_text}>
-          Your fackin account
-        </Typography>
-      </Box>
-      <Box
-        style={findActiveBlock('MANAGMENT_USERS')}
-        className={styles.nav_block}
-        onClick={() => setActiveMenu('MANAGMENT_USERS')}
-      >
-        <Typography variant="h2" className={styles.nav_text}>
-          Accounts management
-        </Typography>
-      </Box>
+    <Box alignItems="center" display="flex" bgcolor="#363636">
+      <NavTabs value={activePage} onChange={onChangePage}>
+        <NavTab label="Your account" value="USER_DATA" />
+        <NavTab label="Accounts list" value="MANAGMENT_USERS" />
+        <NavTab label="About info" value="ABOUT_INFO" />
+      </NavTabs>
     </Box>
   );
 };

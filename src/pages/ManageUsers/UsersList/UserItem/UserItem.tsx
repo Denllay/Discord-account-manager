@@ -18,7 +18,7 @@ export const UserItem: React.FC<IProps> = ({ name, userData }) => {
   };
 
   return (
-    <Box bgcolor="rgba(255, 255, 255, 0.5)" mt={1.5} width="100%">
+    <Box bgcolor="rgba(255, 255, 255, 0.5)" mt={1.5}>
       <Box display="flex" alignItems="center" justifyContent="space-between">
         <Box ml={2}>
           <Typography variant="h3">{name}</Typography>

@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { IUserMoreData } from '@/types/userList';
-import { AlertPopup } from '@/components/UIkit/AlertPopup/AlertPopup';
 import { Box, Button, Typography } from '@material-ui/core';
-import IconCopy from '@/assets/svg/iconCopy.svg';
-import IconChange from '@/assets/svg/iconChange.svg';
-import styles from './UserMoreData.module.scss';
+import { UserDataItem } from './UserDataItem';
 import { useTypedDispatch } from '@/hook/useAppDispatch';
 import { deleteUser } from '@/store/actions/deleteUser';
 
@@ -13,28 +10,9 @@ interface IProps {
 }
 
 export const UserMoreData: React.FC<IProps> = ({ data }) => {
-  const [copyAlertStatus, setCopyAlertStatus] = useState(false);
-  const [errorAlertStatus, setErrorAlertStatus] = useState(false);
   const dispatch = useTypedDispatch();
 
   const { token, email, password, id } = data;
-
-  const closeCopyAlert = () => {
-    setCopyAlertStatus(false);
-  };
-
-  const closeErrorAlert = () => {
-    setErrorAlertStatus(false);
-  };
-
-  const onCopyData = (data: string) => {
-    if (data !== '-') {
-      navigator.clipboard.writeText(data);
-      setCopyAlertStatus(true);
-    } else {
-      setErrorAlertStatus(true);
-    }
-  };
 
   const onDeleteUser = () => {
     dispatch(deleteUser(id));
@@ -56,44 +34,25 @@ export const UserMoreData: React.FC<IProps> = ({ data }) => {
   ];
 
   const renderListUserData = userDataConfig.map(({ title, data }) => {
-    const formatData = data.length >= 15 ? `${data.substr(0, 15)}...` : data;
-
-    return (
-      <Box display="flex" alignItems="center" justifyContent="space-between" width="60%">
-        <Box display="flex">
-          <Box display="flex" mr={1.5}>
-            <IconChange className={styles.icon} />
-
-            <IconCopy className={styles.icon} onClick={() => onCopyData(data)} />
-          </Box>
-
-          <Typography variant="h3">{title}</Typography>
-        </Box>
-
-        <Typography variant="subtitle1">{formatData}</Typography>
-      </Box>
-    );
+    return <UserDataItem title={title} data={data} />;
   });
 
   return (
     <>
       <Box bgcolor="rgba(255, 255, 255, 0.2)">
-        <Box display="flex" flexDirection="column" position="relative">
+        <Box display="flex" flexDirection="column" position="relative" mb={2}>
           {renderListUserData}
         </Box>
+        <Box>
+          <Button color="secondary" onClick={onDeleteUser}>
+            <Typography variant="h2">DELETE ACCOUNT</Typography>
+          </Button>
 
-        <Button color="secondary" onClick={onDeleteUser}>
-          Delete account
-        </Button>
+          <Button>
+            <Typography variant="h2">CHANGE DATA</Typography>
+          </Button>
+        </Box>
       </Box>
-
-      <AlertPopup alertStatus={copyAlertStatus} severity="success" closeAlert={closeCopyAlert}>
-        Sucsess copy!
-      </AlertPopup>
-
-      <AlertPopup alertStatus={errorAlertStatus} severity="error" closeAlert={closeErrorAlert}>
-        This field is empty!
-      </AlertPopup>
     </>
   );
 };

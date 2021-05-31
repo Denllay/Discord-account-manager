@@ -1,7 +1,5 @@
 import React from 'react';
 import { ListItem, ListItemText, Typography } from '@material-ui/core';
-import styles from './UserConfigItem.module.scss';
-
 interface IProps {
   title: string;
   data: string;
@@ -9,23 +7,10 @@ interface IProps {
 const maxDataLength = 30;
 
 export const UserConfigItem: React.FC<IProps> = ({ title, data, children }) => {
-  const cutData = () => {
-    if (data.length >= maxDataLength) {
-      return `${data.substr(0, 20)}...`;
-    }
-    return data;
-  };
+  const formatData = data.length >= maxDataLength ? `${data.substr(0, 20)}...` : data;
 
-  const titleText = (
-    <Typography variant="h2" className={styles.title}>
-      {title}:
-    </Typography>
-  );
-  const dataText = (
-    <Typography variant="subtitle1" className={styles.data}>
-      {cutData()}
-    </Typography>
-  );
+  const titleText = <Typography variant="h2">{title}:</Typography>;
+  const dataText = <Typography variant="subtitle1">{formatData}</Typography>;
 
   return (
     <ListItem>

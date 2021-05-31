@@ -14,15 +14,13 @@ export const ManageUsers = () => {
   }, []);
 
   return (
-    <>
-      <div className={styles.wrapper}>
-        <Box display="flex" justifyContent="space-between">
-          <Typography variant="h1">Accounts list</Typography>
-          <AddUser />
-        </Box>
+    <div className={styles.wrapper}>
+      <Box display="flex" justifyContent="space-between">
+        <Typography variant="h1">Accounts list</Typography>
+        <AddUser />
+      </Box>
 
-        <UsersList />
-      </div>
-    </>
+      <UsersList />
+    </div>
   );
 };

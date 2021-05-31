@@ -3,7 +3,6 @@ import { ListItemIcon } from '@material-ui/core';
 import { useState } from 'react';
 import { AlertPopup } from '@/components/UIkit/AlertPopup/AlertPopup';
 import IconCopy from '@/assets/svg/iconCopy.svg';
-import styles from './UserConfigItem.module.scss';
 
 interface IProps {
   data: string;
@@ -23,7 +22,7 @@ export const UserConfigCopy: React.FC<IProps> = ({ data }) => {
   return (
     <>
       <ListItemIcon>
-        <IconCopy className={styles.icon_copy} onClick={onClickCopyToken} />
+        <IconCopy style={{ cursor: 'pointer' }} onClick={onClickCopyToken} />
       </ListItemIcon>
 
       <AlertPopup alertStatus={copyAlertStatus} severity="success" closeAlert={closeAlert}>

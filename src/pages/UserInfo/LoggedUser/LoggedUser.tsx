@@ -26,8 +26,10 @@ export const LoggedUser = () => {
         </UserConfigItem>
       );
     }
+
     return <UserConfigItem data={data} title={title} key={title} />;
   });
+
   return (
     <div>
       <List>{userListConfigNode}</List>

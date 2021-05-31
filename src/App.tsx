@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Navigation } from './components/Navigation/Navigation';
-import { TMenuStatus } from './types/navigation';
+import { TMenuPages } from './types/navigation';
 import { UserInfo } from './pages/UserInfo/UserInfo';
 import { ManageUsers } from './pages/ManageUsers/ManageUsers';
 import { useTypedDispatch } from './hook/useAppDispatch';
@@ -10,13 +10,13 @@ import styles from './App.module.scss';
 
 export const App = () => {
   const dispatch = useTypedDispatch();
-  const [activeMenu, setActiveMenu] = useState<TMenuStatus>('MANAGMENT_USERS');
+  const [activePage, setActivePage] = useState<TMenuPages>('USER_DATA');
 
   const renderMenu = () => {
-    if (activeMenu === 'MANAGMENT_USERS') {
+    if (activePage === 'MANAGMENT_USERS') {
       return <ManageUsers />;
     }
-    if (activeMenu === 'USER_DATA') {
+    if (activePage === 'USER_DATA') {
       return <UserInfo />;
     }
     return null;
@@ -28,8 +28,8 @@ export const App = () => {
 
   return (
     <div className={styles.App}>
-      <Navigation activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
-      <div className={styles.background_wrapper}>{renderMenu()}</div>
+      <Navigation activePage={activePage} setActivePage={setActivePage} />
+      {renderMenu()}
     </div>
   );
 };
