@@ -24,8 +24,6 @@ export const UserInfo = () => {
       return <LoggedUser />;
     }
     if (accountStatus === 'UNACCOUNTED') {
-      console.log('KEEEEEEEEEEEK');
-
       return <Unaccounted />;
     }
     return null;

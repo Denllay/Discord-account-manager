@@ -6,11 +6,10 @@ import { UserMoreData } from './UserMoreData/UserMoreData';
 import IconMore from '@/assets/svg/iconMore.svg';
 
 interface IProps {
-  name: string;
-  userData: IUserMoreData;
+  data: IUserMoreData;
 }
 
-export const UserItem: React.FC<IProps> = ({ name, userData }) => {
+export const UserItem: React.FC<IProps> = ({ data }) => {
   const [moreDataStatus, setMoreDataStatus] = useState(false);
 
   const onClickMoreData = () => {
@@ -21,7 +20,7 @@ export const UserItem: React.FC<IProps> = ({ name, userData }) => {
     <Box bgcolor="rgba(255, 255, 255, 0.5)" mt={1.5}>
       <Box display="flex" alignItems="center" justifyContent="space-between">
         <Box ml={2}>
-          <Typography variant="h3">{name}</Typography>
+          <Typography variant="h3">{data.name}</Typography>
         </Box>
 
         <ListButton onClick={onClickMoreData} bgcolor="rgba(255, 199, 0, 0.5)">
@@ -29,7 +28,7 @@ export const UserItem: React.FC<IProps> = ({ name, userData }) => {
         </ListButton>
       </Box>
 
-      {moreDataStatus && <UserMoreData data={userData} />}
+      {moreDataStatus && <UserMoreData data={data} />}
     </Box>
   );
 };

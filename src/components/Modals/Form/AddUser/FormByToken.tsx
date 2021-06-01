@@ -24,12 +24,12 @@ const defaultValues: IFormValues = {
   name: '',
 };
 
-const formTokenSchema: Yup.SchemaOf<IFormValues> = Yup.object().shape({
+const formSchema: Yup.SchemaOf<IFormValues> = Yup.object().shape({
   token: Yup.string().required('Write your token, bitch'),
   name: Yup.string().max(15, 'Allo! Maximum 15 characters'),
 });
 
-export const TokenForm: React.FC<IProps> = ({ toggleModal, initialValues = defaultValues }) => {
+export const FormByToken: React.FC<IProps> = ({ toggleModal, initialValues = defaultValues }) => {
   const dispatch = useTypedDispatch();
 
   const onSubmit = ({ token, name }: IFormValues) => {
@@ -41,7 +41,7 @@ export const TokenForm: React.FC<IProps> = ({ toggleModal, initialValues = defau
   };
 
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={formTokenSchema}>
+    <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={formSchema}>
       <Form>
         <Box display="flex" flexDirection="column" alignItems="center">
           <Field name="token" placeholder="token*" component={FormInput} />

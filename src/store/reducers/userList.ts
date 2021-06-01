@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IUserListItem, IUserListState } from '../types/userList';
+import { ISetChangeData, IUserListItem, IUserListState } from '../types/userList';
 
 const initialState: IUserListState = {
   list: [],
@@ -21,11 +21,16 @@ const userList = createSlice({
     deleteUserById(state, { payload }: PayloadAction<string>) {
       state.list = state.list.filter((el) => el.id !== payload);
     },
+
     setTokenStatus(state, { payload }: PayloadAction<boolean>) {
       state.tokenInList = payload;
+    },
+
+    setChangeData(state, { payload: { data, changeIndex } }: PayloadAction<ISetChangeData>) {
+      state.list[changeIndex] = data;
     },
   },
 });
 
 export default userList.reducer;
-export const { setUserList, setUser, deleteUserById, setTokenStatus } = userList.actions;
+export const { setUserList, setUser, deleteUserById, setTokenStatus, setChangeData } = userList.actions;

@@ -9,6 +9,7 @@ const Submit = withStyles({
     backgroundColor: '#A0FE67',
     fontSize: 14,
     fontFamily: 'Rubik, sans-serif',
+    fontWeight: 400,
     color: '#545454',
     display: 'flex',
     justifyContent: 'center',

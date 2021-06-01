@@ -8,10 +8,12 @@ import { useTypedDispatch } from './hook/useAppDispatch';
 import { getUserData } from './store/actions/getUserData';
 import styles from './App.module.scss';
 import { getUserList } from './store/actions/getUserList';
+import { useTypedSelector } from './hook/useTypedSelector';
 
 export const App = () => {
   const dispatch = useTypedDispatch();
-  const [page, setPage] = useState<TAppPages>('USER_INFO');
+  const [page, setPage] = useState<TAppPages>('MANAGMENT_USERS');
+  const { list } = useTypedSelector((state) => state.userList);
 
   const renderPage = () => {
     if (page === 'MANAGMENT_USERS') {

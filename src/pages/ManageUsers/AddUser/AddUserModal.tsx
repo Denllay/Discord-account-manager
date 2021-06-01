@@ -1,8 +1,8 @@
 import React from 'react';
-import { BasicForm } from '@/components/Modals/Form/BasicForm';
 import { AddUser } from '@/components/AddUser/AddUser';
-import { ChoiceForm } from '@/components/Modals/Form/ChoiceForm';
-import { TokenForm } from '@/components/Modals/Form/TokenForm';
+import { ChoiceForm } from '@/components/Modals/Form/AddUser/ChoiceForm';
+import { FormByData } from '@/components/Modals/Form/AddUser/FormByData';
+import { FormByToken } from '@/components/Modals/Form/AddUser/FormByToken';
 import { useState } from 'react';
 import { TFormStatus } from '@/types/addUser';
 
@@ -17,7 +17,7 @@ export const AddUserModal: React.FC<IProps> = ({ toggleModal }) => {
     if (formStatus === 'BASIC') {
       return (
         <AddUser setFormStatus={setFormStatus}>
-          <BasicForm toggleModal={toggleModal} />
+          <FormByData toggleModal={toggleModal} />
         </AddUser>
       );
     }
@@ -25,7 +25,7 @@ export const AddUserModal: React.FC<IProps> = ({ toggleModal }) => {
     if (formStatus === 'TOKEN') {
       return (
         <AddUser setFormStatus={setFormStatus}>
-          <TokenForm toggleModal={toggleModal} />
+          <FormByToken toggleModal={toggleModal} />
         </AddUser>
       );
     }

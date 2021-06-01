@@ -6,8 +6,8 @@ import { useTypedSelector } from '@/hook/useTypedSelector';
 export const UsersList = () => {
   const { list } = useTypedSelector((state) => state.userList);
 
-  const userRenderList = list.map(({ name, ...userData }) => {
-    return <UserItem key={userData.token} name={name} userData={userData} />;
+  const userRenderList = list.map((data) => {
+    return <UserItem key={data.token} data={data} />;
   });
 
   return (

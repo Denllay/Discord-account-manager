@@ -1,18 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IUserMoreData } from '@/types/userList';
 import { Box, Button, Typography } from '@material-ui/core';
-import { UserDataItem } from './UserDataItem';
+import { DataItem } from './DataItem';
+import { Modal } from '@/components/UIkit/Modal/Modal';
 import { useTypedDispatch } from '@/hook/useAppDispatch';
 import { deleteUser } from '@/store/actions/deleteUser';
 import { checkTokenInList } from '@/store/actions/checkTokenInList';
-
+import { FormChangeData } from '@/components/Modals/Form/FormChangeData';
 interface IProps {
   data: IUserMoreData;
 }
 
-export const UserMoreData: React.FC<IProps> = ({ data }) => {
-  const dispatch = useTypedDispatch();
+const formatEmptyData = (data: IUserMoreData) => {
+  let result: IUserMoreData = {} as IUserMoreData;
+  type TEl = keyof IUserMoreData;
 
+  for (const el in data) {
+    if (data[el as TEl] !== '-') {
+      result[el as TEl] = data[el as TEl];
+    } else {
+      result[el as TEl] = '';
+    }
+  }
+  return result;
+};
+
+export const UserMoreData: React.FC<IProps> = ({ data }) => {
+  const [changeDataStatus, setChangeDataStatus] = useState(false);
+  const dispatch = useTypedDispatch();
   const { token, email, password, id } = data;
 
   const onDeleteUser = () => {
@@ -35,31 +50,40 @@ export const UserMoreData: React.FC<IProps> = ({ data }) => {
     },
   ];
 
-  const renderListUserData = userDataConfig.map(({ title, data }) => {
-    return <UserDataItem title={title} data={data} />;
+  const listUserData = userDataConfig.map(({ title, data }) => {
+    return <DataItem title={title} data={data} />;
   });
+
+  const toggleChangeData = () => {
+    setChangeDataStatus((prev) => !prev);
+  };
+
+  const initialFormValues = formatEmptyData(data);
 
   return (
     <>
       <Box bgcolor="rgba(255, 255, 255, 0.2)">
         <Box display="flex" flexDirection="column" position="relative" mb={2}>
-          {renderListUserData}
+          {listUserData}
         </Box>
 
         <Box>
-          <Button color="secondary" onClick={onDeleteUser}>
+          <Button onClick={onDeleteUser}>
             <Typography color="error" variant="h2">
               DELETE ACCOUNT
             </Typography>
           </Button>
 
-          <Button>
+          <Button onClick={toggleChangeData}>
             <Typography color="secondary" variant="h2">
               CHANGE DATA
             </Typography>
           </Button>
         </Box>
       </Box>
+      <Modal width="400px" height="300px" onOpen={changeDataStatus} toggleModal={toggleChangeData}>
+        <FormChangeData data={initialFormValues} toggleModal={toggleChangeData} />
+      </Modal>
     </>
   );
 };

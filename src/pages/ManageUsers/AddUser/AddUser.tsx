@@ -16,7 +16,7 @@ export const AddUser = () => {
         <IconPlus />
       </ListButton>
 
-      <Modal width="400px" height="320px" statusModal={modalStatus} toggleModal={toggleModal}>
+      <Modal width="400px" height="320px" onOpen={modalStatus} toggleModal={toggleModal}>
         <AddUserModal toggleModal={toggleModal} />
       </Modal>
     </>

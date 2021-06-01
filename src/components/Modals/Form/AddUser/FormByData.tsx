@@ -20,19 +20,19 @@ const initialValues: IFormValues = {
   name: '',
 };
 
-const formTokenSchema: Yup.SchemaOf<IFormValues> = Yup.object().shape({
+const formSchema: Yup.SchemaOf<IFormValues> = Yup.object().shape({
   password: Yup.string().trim('Password cannot have spaces').required('Write your password, bitch'),
   email: Yup.string().trim('Email cannot have spaces').required('Write your email, bitch'),
   name: Yup.string().max(15, 'Allo! Maximum 15 characters'),
 });
 
-export const BasicForm: React.FC<IProps> = ({ toggleModal }) => {
+export const FormByData: React.FC<IProps> = ({ toggleModal }) => {
   const onSubmit = (values: IFormValues) => {
     console.log(values);
   };
 
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={formTokenSchema}>
+    <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={formSchema}>
       <Form>
         <Box display="flex" flexDirection="column" alignItems="center">
           <Field name="password" placeholder="password*" component={FormInput} />
