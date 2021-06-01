@@ -7,11 +7,6 @@ import { getUserList } from '@/store/actions/getUserList';
 import styles from './ManageUsers.module.scss';
 
 export const ManageUsers = () => {
-  const dispatch = useTypedDispatch();
-
-  useEffect(() => {
-    dispatch(getUserList());
-  }, []);
 
   return (
     <div className={styles.wrapper}>

@@ -1,9 +1,9 @@
-import { IStyledTabProps, TMenuPages } from '@/types/navigation';
-import { Box, createStyles, Theme, Typography, withStyles } from '@material-ui/core';
+import { IStyledTabProps } from '@/types/navigation';
+import { Box, createStyles, Theme, withStyles } from '@material-ui/core';
 import { Tab } from '@material-ui/core';
 import React from 'react';
 
-export const NavTab = withStyles((theme: Theme) =>
+export const NavTab = withStyles(() =>
   createStyles({
     root: {
       textTransform: 'none',

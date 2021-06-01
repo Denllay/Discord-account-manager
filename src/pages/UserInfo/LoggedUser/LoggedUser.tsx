@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Typography, Box } from '@material-ui/core';
 import { useTypedSelector } from '@/hook/useTypedSelector';
 import { ButtonAddUser } from './ButtonAddUser';
 import { CopyPopup } from '@/components/UIkit/CopyPopup/CopyPopup';
 import IconCopy from '@/assets/svg/iconCopy.svg';
 import styles from './LoggedUser.module.scss';
+import { useTypedDispatch } from '@/hook/useAppDispatch';
+import { checkTokenInList } from '@/store/actions/checkTokenInList';
 
 export const LoggedUser = () => {
   const [copyStatus, setCopyStatus] = useState(false);
-
   const { token } = useTypedSelector((state) => state.user);
   const formatToken = `${token!.substr(0, 20)}...`;
 

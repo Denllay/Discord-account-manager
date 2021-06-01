@@ -1,5 +1,6 @@
 export interface IUserListState {
   list: IUserListItem[];
+  tokenInList: boolean;
 }
 
 export interface IAddUserPayload {

@@ -7,6 +7,7 @@ import { FormInput } from '@/components/UIkit/Input/FormInput';
 import { useTypedDispatch } from '@/hook/useAppDispatch';
 import { addUser } from '@/store/actions/addUser';
 import * as Yup from 'yup';
+import { checkTokenInList } from '@/store/actions/checkTokenInList';
 
 interface IProps {
   toggleModal(): void;
@@ -35,6 +36,7 @@ export const TokenForm: React.FC<IProps> = ({ toggleModal, initialValues = defau
     const formatName = name || '-';
 
     dispatch(addUser({ token, name: formatName, password: '-', email: '-' }));
+    dispatch(checkTokenInList(token));
     toggleModal();
   };
 

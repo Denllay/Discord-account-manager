@@ -1,12 +1,12 @@
 import React, { SetStateAction } from 'react';
-import { Box, Tabs, Tab, Typography, withStyles } from '@material-ui/core';
-import { IStyledTabsProps, TMenuPages, TOnchangeTab } from '@/types/navigation';
+import { Box, Tabs, withStyles } from '@material-ui/core';
+import { IStyledTabsProps, TAppPages, TOnchangeTab } from '@/types/navigation';
 import { NavTab } from './NavTab';
 import { Dispatch } from 'react';
 
 interface IProps {
-  activePage: TMenuPages;
-  setActivePage: Dispatch<SetStateAction<TMenuPages>>;
+  page: TAppPages;
+  setPage: Dispatch<SetStateAction<TAppPages>>;
 }
 
 const NavTabs = withStyles({
@@ -22,14 +22,14 @@ const NavTabs = withStyles({
   },
 })((props: IStyledTabsProps) => <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />);
 
-export const Navigation: React.FC<IProps> = ({ activePage, setActivePage }) => {
+export const Navigation: React.FC<IProps> = ({ page, setPage }) => {
   const onChangePage: TOnchangeTab = (_, newPage) => {
-    setActivePage(newPage);
+    setPage(newPage);
   };
 
   return (
     <Box alignItems="center" display="flex" bgcolor="#363636">
-      <NavTabs value={activePage} onChange={onChangePage}>
+      <NavTabs value={page} onChange={onChangePage}>
         <NavTab label="Your account" value="USER_INFO" />
         <NavTab label="Accounts list" value="MANAGMENT_USERS" />
         <NavTab label="About info" value="ABOUT_INFO" />

@@ -3,6 +3,7 @@ import { IUserListItem, IUserListState } from '../types/userList';
 
 const initialState: IUserListState = {
   list: [],
+  tokenInList: false,
 };
 
 const userList = createSlice({
@@ -20,8 +21,11 @@ const userList = createSlice({
     deleteUserById(state, { payload }: PayloadAction<string>) {
       state.list = state.list.filter((el) => el.id !== payload);
     },
+    setTokenStatus(state, { payload }: PayloadAction<boolean>) {
+      state.tokenInList = payload;
+    },
   },
 });
 
 export default userList.reducer;
-export const { setUserList, setUser, deleteUserById } = userList.actions;
+export const { setUserList, setUser, deleteUserById, setTokenStatus } = userList.actions;

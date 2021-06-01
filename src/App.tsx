@@ -1,35 +1,38 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Navigation } from './components/Navigation/Navigation';
-import { TMenuPages } from './types/navigation';
+import { TAppPages } from './types/navigation';
 import { UserInfo } from './pages/UserInfo/UserInfo';
 import { ManageUsers } from './pages/ManageUsers/ManageUsers';
 import { useTypedDispatch } from './hook/useAppDispatch';
 import { getUserData } from './store/actions/getUserData';
 import styles from './App.module.scss';
+import { getUserList } from './store/actions/getUserList';
+import { checkTokenInList } from './store/actions/checkTokenInList';
 
 export const App = () => {
   const dispatch = useTypedDispatch();
-  const [activePage, setActivePage] = useState<TMenuPages>('USER_INFO');
+  const [page, setPage] = useState<TAppPages>('USER_INFO');
 
-  const renderMenu = () => {
-    if (activePage === 'MANAGMENT_USERS') {
+  const renderPage = () => {
+    if (page === 'MANAGMENT_USERS') {
       return <ManageUsers />;
     }
-    if (activePage === 'USER_INFO') {
+    if (page === 'USER_INFO') {
       return <UserInfo />;
     }
     return null;
   };
 
   useEffect(() => {
+    dispatch(getUserList());
     dispatch(getUserData());
   }, []);
 
   return (
     <div className={styles.App}>
-      <Navigation activePage={activePage} setActivePage={setActivePage} />
-      {renderMenu()}
+      <Navigation page={page} setPage={setPage} />
+      {renderPage()}
     </div>
   );
 };

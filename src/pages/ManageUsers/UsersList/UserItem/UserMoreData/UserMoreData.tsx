@@ -4,6 +4,7 @@ import { Box, Button, Typography } from '@material-ui/core';
 import { UserDataItem } from './UserDataItem';
 import { useTypedDispatch } from '@/hook/useAppDispatch';
 import { deleteUser } from '@/store/actions/deleteUser';
+import { checkTokenInList } from '@/store/actions/checkTokenInList';
 
 interface IProps {
   data: IUserMoreData;
@@ -16,6 +17,7 @@ export const UserMoreData: React.FC<IProps> = ({ data }) => {
 
   const onDeleteUser = () => {
     dispatch(deleteUser(id));
+    dispatch(checkTokenInList(token));
   };
 
   const userDataConfig = [
