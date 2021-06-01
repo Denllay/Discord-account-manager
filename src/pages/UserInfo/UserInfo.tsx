@@ -6,23 +6,26 @@ import { useTypedSelector } from '@/hook/useTypedSelector';
 import { useCheckIsDicrod } from '@/hook/useCheckIsDicrod';
 
 export const UserInfo = () => {
-  const [accountStatus, setAccountStatus] = useState<TUserStatus>('UNACCOUNTED');
+  const [accountStatus, setAccountStatus] = useState<TUserStatus>('LOADING');
   const { token } = useTypedSelector((state) => state.user);
   const isDiscord = useCheckIsDicrod();
 
   useEffect(() => {
     if (isDiscord && token) {
       setAccountStatus('LOGGED_USER');
-    } else {
+    }
+    if (!token) {
       setAccountStatus('UNACCOUNTED');
     }
-  });
+  }, [token, isDiscord]);
 
   const renderInfoByStatus = () => {
     if (accountStatus === 'LOGGED_USER') {
       return <LoggedUser />;
     }
     if (accountStatus === 'UNACCOUNTED') {
+      console.log('KEEEEEEEEEEEK');
+
       return <Unaccounted />;
     }
     return null;

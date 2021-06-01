@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { TokenForm } from '@/components/Modals/Form/TokenForm';
 import { Modal } from '@/components/UIkit/Modal/Modal';
 import { Box, Button } from '@material-ui/core';
 import { useTypedSelector } from '@/hook/useTypedSelector';
-import { useTypedDispatch } from '@/hook/useAppDispatch';
-import { checkTokenInList } from '@/store/actions/checkTokenInList';
 
 interface IProps {
   token: string;

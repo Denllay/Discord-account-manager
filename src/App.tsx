@@ -8,7 +8,6 @@ import { useTypedDispatch } from './hook/useAppDispatch';
 import { getUserData } from './store/actions/getUserData';
 import styles from './App.module.scss';
 import { getUserList } from './store/actions/getUserList';
-import { checkTokenInList } from './store/actions/checkTokenInList';
 
 export const App = () => {
   const dispatch = useTypedDispatch();

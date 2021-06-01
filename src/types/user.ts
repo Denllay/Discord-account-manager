@@ -1,1 +1,1 @@
-export type TUserStatus = 'LOGGED_USER' | 'UNACCOUNTED';
+export type TUserStatus = 'LOGGED_USER' | 'UNACCOUNTED' | 'LOADING';
