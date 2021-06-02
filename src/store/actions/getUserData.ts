@@ -1,6 +1,6 @@
 import { useGetCurrentTab } from '@/hook/useGetCurrentTab';
 import { useTypedSendMessage } from '@/hook/useTypedSendMessage';
-import { EnumChromeEvents, ISetUserData } from '@/types/chromeEvents';
+import { EnumChromeEvents } from '@/types/chromeEvents';
 import { AppDispatch, AppThunk } from '..';
 import { setUserData } from '../reducers/user';
 import { checkTokenInList } from './checkTokenInList';
@@ -8,9 +8,9 @@ import { checkTokenInList } from './checkTokenInList';
 export const getUserData = (): AppThunk => async (dispatch: AppDispatch) => {
   const { id } = await useGetCurrentTab();
 
-  const onGetResponse = ({ token, email }: ISetUserData) => {
-    if (token && email && !chrome.runtime.lastError) {
-      dispatch(setUserData({ token, email }));
+  const onGetResponse = (token: string) => {
+    if (token && !chrome.runtime.lastError) {
+      dispatch(setUserData(token));
       dispatch(checkTokenInList(token));
     }
   };

@@ -6,14 +6,12 @@ import { UserInfo } from './pages/UserInfo/UserInfo';
 import { ManageUsers } from './pages/ManageUsers/ManageUsers';
 import { useTypedDispatch } from './hook/useAppDispatch';
 import { getUserData } from './store/actions/getUserData';
-import styles from './App.module.scss';
 import { getUserList } from './store/actions/getUserList';
-import { useTypedSelector } from './hook/useTypedSelector';
+import styles from './App.module.scss';
 
 export const App = () => {
   const dispatch = useTypedDispatch();
   const [page, setPage] = useState<TAppPages>('MANAGMENT_USERS');
-  const { list } = useTypedSelector((state) => state.userList);
 
   const renderPage = () => {
     if (page === 'MANAGMENT_USERS') {
@@ -33,6 +31,7 @@ export const App = () => {
   return (
     <div className={styles.App}>
       <Navigation page={page} setPage={setPage} />
+
       {renderPage()}
     </div>
   );
