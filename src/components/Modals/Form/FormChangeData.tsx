@@ -3,17 +3,17 @@ import { Box } from '@material-ui/core';
 import { Formik, Field, Form } from 'formik';
 import { SubmitButton } from '@/components/UIkit/Button/SubmitButton/SubmitButton';
 import { FormInput } from '@/components/UIkit/Input/FormInput';
-import { IUserMoreData } from '@/types/userList';
+import { IUserMoreInfo } from '@/types/userList';
 import { useTypedDispatch } from '@/hook/useAppDispatch';
 import { changeUserData } from '@/store/actions/changeUserData';
 import * as Yup from 'yup';
 
 interface IProps {
-  data: IUserMoreData;
+  data: IUserMoreInfo;
   toggleModal(): void;
 }
 
-type IFormValues = Partial<Omit<IUserMoreData, 'id'>>;
+type IFormValues = Partial<Omit<IUserMoreInfo, 'id'>>;
 
 const formSchema: Yup.SchemaOf<IFormValues> = Yup.object().shape({
   name: Yup.string().max(15, 'Allo! Maximum 15 characters'),
@@ -31,7 +31,7 @@ const formSchema: Yup.SchemaOf<IFormValues> = Yup.object().shape({
 export const FormChangeData: React.FC<IProps> = ({ data: { id, ...initialValues }, toggleModal }) => {
   const dispatch = useTypedDispatch();
 
-  const onSubmit = ({ name, ...data }: Omit<IUserMoreData, 'id'>) => {
+  const onSubmit = ({ name, ...data }: Omit<IUserMoreInfo, 'id'>) => {
     const formatName = name || '-';
 
     dispatch(changeUserData({ name: formatName, id, ...data }));

@@ -9,7 +9,6 @@ import styles from './LoggedUser.module.scss';
 export const LoggedUser = () => {
   const [copyStatus, setCopyStatus] = useState(false);
   const { token } = useTypedSelector((state) => state.user);
-  console.log(token);
 
   const formatToken = `${token!.substr(0, 20)}...`;
 

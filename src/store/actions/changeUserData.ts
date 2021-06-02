@@ -1,9 +1,9 @@
-import { IUserMoreData } from '@/types/userList';
+import { IUserMoreInfo } from '@/types/userList';
 import { AppDispatch, AppThunk } from '..';
 import { setChangeData } from '../reducers/userList';
 
 export const changeUserData =
-  (data: IUserMoreData): AppThunk =>
+  (data: IUserMoreInfo): AppThunk =>
   (dispatch: AppDispatch, getState) => {
     const { list } = getState().userList;
     const copyList = JSON.parse(JSON.stringify(list));

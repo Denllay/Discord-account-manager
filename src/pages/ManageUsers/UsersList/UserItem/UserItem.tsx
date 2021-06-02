@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Box, Typography } from '@material-ui/core';
 import { ListButton } from '@/components/UIkit/Button/ListButton/ListButton';
-import { IUserMoreData } from '@/types/userList';
-import { UserMoreData } from './UserMoreData/UserMoreData';
+import { IUserMoreInfo } from '@/types/userList';
+import { UserMoreInfo } from './UserMoreInfo/UserMoreInfo';
 import IconMore from '@/assets/svg/iconMore.svg';
 
 interface IProps {
-  data: IUserMoreData;
+  data: IUserMoreInfo;
 }
 
 export const UserItem: React.FC<IProps> = ({ data }) => {
@@ -28,7 +28,7 @@ export const UserItem: React.FC<IProps> = ({ data }) => {
         </ListButton>
       </Box>
 
-      {moreDataStatus && <UserMoreData data={data} />}
+      {moreDataStatus && <UserMoreInfo data={data} />}
     </Box>
   );
 };

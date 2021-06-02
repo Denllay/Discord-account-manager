@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IUserMoreData } from '@/types/userList';
+import { IUserMoreInfo } from '@/types/userList';
 import { Box, Button, Typography } from '@material-ui/core';
 import { Modal } from '@/components/UIkit/Modal/Modal';
 import { useTypedDispatch } from '@/hook/useAppDispatch';
@@ -9,12 +9,12 @@ import { FormChangeData } from '@/components/Modals/Form/FormChangeData';
 import { loginUser } from '@/store/actions/loginUser';
 
 interface IProps {
-  data: IUserMoreData;
+  data: IUserMoreInfo;
 }
 
-const formatEmptyData = (data: IUserMoreData) => {
-  let result: IUserMoreData = {} as IUserMoreData;
-  type TEl = keyof IUserMoreData;
+const formatEmptyData = (data: IUserMoreInfo) => {
+  let result: IUserMoreInfo = {} as IUserMoreInfo;
+  type TEl = keyof IUserMoreInfo;
 
   for (const el in data) {
     if (data[el as TEl] !== '-') {
@@ -62,6 +62,7 @@ export const DataButtonBlock: React.FC<IProps> = ({ data }) => {
             </Typography>
           </Button>
         </Box>
+
         <Box mr={3}>
           <Button onClick={onLogin}>
             <Typography color="secondary" variant="button">

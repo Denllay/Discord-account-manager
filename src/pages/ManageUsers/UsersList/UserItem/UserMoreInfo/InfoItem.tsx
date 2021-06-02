@@ -9,7 +9,7 @@ interface IProps {
   title: string;
 }
 
-export const DataItem: React.FC<IProps> = ({ data, title }) => {
+export const InfoItem: React.FC<IProps> = ({ data, title }) => {
   const [copyAlertStatus, setCopyAlertStatus] = useState(false);
 
   const formatData = data.length >= 15 ? `${data.substr(0, 15)}...` : data;

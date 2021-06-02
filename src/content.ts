@@ -1,5 +1,9 @@
 import { EnumChromeEvents, TChromeEvents } from './types/chromeEvents';
 
+chrome.runtime.sendMessage({
+  action: EnumChromeEvents.PAGE_LOADED,
+});
+
 chrome.runtime.onMessage.addListener((message: TChromeEvents, _, sendResponse) => {
   switch (message.action) {
     case EnumChromeEvents.GET_USER_DATA: {

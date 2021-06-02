@@ -3,6 +3,7 @@ import { IUserState } from '../types/user';
 
 const initialState: IUserState = {
   token: null,
+  appLoadedStatus: true,
 };
 
 const user = createSlice({
@@ -12,8 +13,11 @@ const user = createSlice({
     setUserData(state, { payload }: PayloadAction<string>) {
       state.token = payload;
     },
+    setAppStatus(state, { payload }: PayloadAction<boolean>) {
+      state.appLoadedStatus = payload;
+    },
   },
 });
 export default user.reducer;
 
-export const { setUserData } = user.actions;
+export const { setUserData, setAppStatus } = user.actions;

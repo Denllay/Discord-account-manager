@@ -2,7 +2,7 @@ import { useGetCurrentTab } from '@/hook/useGetCurrentTab';
 import { useTypedSendMessage } from '@/hook/useTypedSendMessage';
 import { EnumChromeEvents } from '@/types/chromeEvents';
 import { AppDispatch, AppThunk } from '..';
-import { setUserData } from '../reducers/user';
+import { setAppStatus, setUserData } from '../reducers/user';
 
 export const loginUser =
   (token: string): AppThunk =>
@@ -12,6 +12,7 @@ export const loginUser =
     const onGetResponse = () => {
       if (!chrome.runtime.lastError) {
         dispatch(setUserData(token));
+        dispatch(setAppStatus(false));
       }
     };
 
