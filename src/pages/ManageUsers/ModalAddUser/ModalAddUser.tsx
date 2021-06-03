@@ -1,5 +1,5 @@
 import React from 'react';
-import { AddUser } from '@/components/AddUser/AddUser';
+import { BoxAddUser } from '@/components/Modals/Form/AddUser/BoxAddUser';
 import { ChoiceForm } from '@/components/Modals/Form/AddUser/ChoiceForm';
 import { FormByData } from '@/components/Modals/Form/AddUser/FormByData';
 import { FormByToken } from '@/components/Modals/Form/AddUser/FormByToken';
@@ -10,23 +10,23 @@ interface IProps {
   toggleModal(): void;
 }
 
-export const AddUserModal: React.FC<IProps> = ({ toggleModal }) => {
+export const ModalAddUser: React.FC<IProps> = ({ toggleModal }) => {
   const [formStatus, setFormStatus] = useState<TFormStatus>('CHOICE');
 
   const renderForm = () => {
     if (formStatus === 'BASIC') {
       return (
-        <AddUser setFormStatus={setFormStatus}>
+        <BoxAddUser setFormStatus={setFormStatus}>
           <FormByData toggleModal={toggleModal} />
-        </AddUser>
+        </BoxAddUser>
       );
     }
 
     if (formStatus === 'TOKEN') {
       return (
-        <AddUser setFormStatus={setFormStatus}>
+        <BoxAddUser setFormStatus={setFormStatus}>
           <FormByToken toggleModal={toggleModal} />
-        </AddUser>
+        </BoxAddUser>
       );
     }
 

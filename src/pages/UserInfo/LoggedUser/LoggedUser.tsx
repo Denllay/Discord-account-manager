@@ -25,6 +25,7 @@ export const LoggedUser = () => {
       <div className={styles.wrapper}>
         <Box pt={4.4} pl={2}>
           <Typography variant="h1">Account</Typography>
+
           <Box display="flex" alignItems="center" mt={2.5}>
             <IconCopy onClick={onCopy} style={{ cursor: 'pointer' }} />
 

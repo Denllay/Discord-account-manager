@@ -1,4 +1,4 @@
-export interface IUserMoreInfo {
+export interface IUserInfoList {
   password: string;
   email: string;
   token: string;

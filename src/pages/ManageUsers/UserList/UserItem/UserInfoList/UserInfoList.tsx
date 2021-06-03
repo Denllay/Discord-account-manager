@@ -1,13 +1,13 @@
 import React from 'react';
-import { IUserMoreInfo } from '@/types/userList';
+import { IUserInfoList } from '@/types/userList';
 import { Box } from '@material-ui/core';
 import { DataButtonBlock } from './BlockButton';
-import { InfoItem } from './InfoItem';
+import { InfoField } from './InfoField';
 interface IProps {
-  data: IUserMoreInfo;
+  data: IUserInfoList;
 }
 
-export const UserMoreInfo: React.FC<IProps> = ({ data }) => {
+export const UserInfoList: React.FC<IProps> = ({ data }) => {
   const { token, email, password } = data;
 
   const userDataConfig = [
@@ -26,7 +26,7 @@ export const UserMoreInfo: React.FC<IProps> = ({ data }) => {
   ];
 
   const listUserData = userDataConfig.map(({ title, data }) => {
-    return <InfoItem title={title} data={data} />;
+    return <InfoField title={title} data={data} />;
   });
 
   return (

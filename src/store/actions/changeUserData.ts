@@ -1,13 +1,12 @@
-import { IUserMoreInfo } from '@/types/userList';
+import { IUserInfoList } from '@/types/userList';
 import { AppDispatch, AppThunk } from '..';
 import { setChangeData } from '../reducers/userList';
 
 export const changeUserData =
-  (data: IUserMoreInfo): AppThunk =>
+  (data: IUserInfoList): AppThunk =>
   (dispatch: AppDispatch, getState) => {
     const { list } = getState().userList;
     const copyList = JSON.parse(JSON.stringify(list));
-
     const changeUserIndex = list.findIndex((el) => el.id === data.id);
 
     copyList[changeUserIndex] = data;

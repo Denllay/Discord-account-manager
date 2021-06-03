@@ -8,13 +8,18 @@ interface IProps {
   setFormStatus: Dispatch<SetStateAction<TFormStatus>>;
 }
 
-export const AddUser: React.FC<IProps> = ({ children, setFormStatus }) => {
+export const BoxAddUser: React.FC<IProps> = ({ children, setFormStatus }) => {
+  const onBackForm = () => {
+    setFormStatus('CHOICE');
+  };
+
   return (
     <div>
       <Box display="flex" justifyContent="space-between" width="68%" ml={1}>
-        <Button startIcon={<IconBack />} size="small" onClick={() => setFormStatus('CHOICE')}>
+        <Button startIcon={<IconBack />} size="small" onClick={onBackForm}>
           Back
         </Button>
+
         <Typography variant="h1">Add account</Typography>
       </Box>
 

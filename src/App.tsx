@@ -8,9 +8,9 @@ import { useTypedDispatch } from './hook/useAppDispatch';
 import { getUserData } from './store/actions/getUserData';
 import { getUserList } from './store/actions/getUserList';
 import { onMessageChromeEvent } from './store/actions/onMessageChromeEvent';
-import styles from './App.module.scss';
 import { useTypedSelector } from './hook/useTypedSelector';
 import { PreLoader } from './components/PreLoader/PreLoader';
+import styles from './App.module.scss';
 
 export const App = () => {
   const dispatch = useTypedDispatch();
@@ -21,6 +21,7 @@ export const App = () => {
     if (!appLoadedStatus) {
       return <PreLoader />;
     }
+
     if (page === 'MANAGMENT_USERS') {
       return <ManageUsers />;
     }

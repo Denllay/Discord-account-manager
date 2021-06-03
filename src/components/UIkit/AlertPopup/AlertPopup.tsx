@@ -40,6 +40,7 @@ export const AlertPopup: React.FC<IProps> = ({ children, alertStatus, severity, 
     if (alertStatus) {
       document.body.appendChild(el);
     }
+
     setTimeout(() => {
       closePopup();
     }, closePopupDuration);

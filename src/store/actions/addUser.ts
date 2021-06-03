@@ -12,9 +12,8 @@ export const addUser =
     };
 
     const { list } = getState().userList;
-    const localStorageData = JSON.stringify([...list, newUser]);
 
-    localStorage.setItem('userList', localStorageData);
+    localStorage.setItem('userList', JSON.stringify([...list, newUser]));
 
     dispatch(setUser(newUser));
   };

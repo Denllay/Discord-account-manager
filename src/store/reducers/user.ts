@@ -13,6 +13,7 @@ const user = createSlice({
     setUserData(state, { payload }: PayloadAction<string>) {
       state.token = payload;
     },
+
     setAppStatus(state, { payload }: PayloadAction<boolean>) {
       state.appLoadedStatus = payload;
     },

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IUserMoreInfo } from '@/types/userList';
+import { IUserInfoList } from '@/types/userList';
 import { Box, Button, Typography } from '@material-ui/core';
 import { Modal } from '@/components/UIkit/Modal/Modal';
 import { useTypedDispatch } from '@/hook/useAppDispatch';
@@ -9,20 +9,20 @@ import { FormChangeData } from '@/components/Modals/Form/FormChangeData';
 import { loginUser } from '@/store/actions/loginUser';
 
 interface IProps {
-  data: IUserMoreInfo;
+  data: IUserInfoList;
 }
 
-const formatEmptyData = (data: IUserMoreInfo) => {
-  let result: IUserMoreInfo = {} as IUserMoreInfo;
-  type TEl = keyof IUserMoreInfo;
+const formatEmptyData = <T extends keyof IUserInfoList>(data: Record<T, string>) => {
+  let result = {} as Record<T, string>;
 
   for (const el in data) {
-    if (data[el as TEl] !== '-') {
-      result[el as TEl] = data[el as TEl];
+    if (data[el] === '-') {
+      result[el] = '';
     } else {
-      result[el as TEl] = '';
+      result[el] = data[el];
     }
   }
+
   return result;
 };
 

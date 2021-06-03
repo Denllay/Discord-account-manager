@@ -31,7 +31,9 @@ export const Navigation: React.FC<IProps> = ({ page, setPage }) => {
     <Box alignItems="center" display="flex" bgcolor="#363636">
       <NavTabs value={page} onChange={onChangePage}>
         <NavTab label="Your account" value="USER_INFO" />
+
         <NavTab label="Accounts list" value="MANAGMENT_USERS" />
+
         <NavTab label="About info" value="ABOUT_INFO" />
       </NavTabs>
     </Box>

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { ListButton } from '@/components/UIkit/Button/ListButton/ListButton';
 import { Modal } from '@/components/UIkit/Modal/Modal';
-import { AddUserModal } from './AddUserModal';
+import { ModalAddUser } from './ModalAddUser';
 import IconPlus from '@/assets/svg/iconPlus.svg';
 
-export const AddUser = () => {
+export const ButtonAddUser = () => {
   const [modalStatus, setModalStatus] = useState(false);
 
   const toggleModal = () => {
@@ -17,7 +17,7 @@ export const AddUser = () => {
       </ListButton>
 
       <Modal width="400px" height="320px" onOpen={modalStatus} toggleModal={toggleModal}>
-        <AddUserModal toggleModal={toggleModal} />
+        <ModalAddUser toggleModal={toggleModal} />
       </Modal>
     </>
   );
