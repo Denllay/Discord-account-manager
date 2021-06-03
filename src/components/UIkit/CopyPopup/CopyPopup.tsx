@@ -23,7 +23,7 @@ export const CopyPopup: React.FC<IProps> = ({ copyData, copyStatus, onClose }) =
 
   return (
     alertMode && (
-      <AlertPopup onClose={onClose} alertStatus={copyStatus} severity={alertMode!}>
+      <AlertPopup onClose={onClose} onOpen={copyStatus} severity={alertMode!}>
         {copyTitleByMode}
       </AlertPopup>
     )

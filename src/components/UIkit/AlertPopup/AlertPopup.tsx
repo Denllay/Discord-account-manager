@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
 interface IProps {
-  alertStatus: boolean;
+  onOpen: boolean;
   severity: 'success' | 'info' | 'error';
   onClose(): void;
 }
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 
 const closePopupDuration = 3000;
 
-export const AlertPopup: React.FC<IProps> = ({ children, alertStatus, severity, onClose }) => {
+export const AlertPopup: React.FC<IProps> = ({ children, onOpen, severity, onClose }) => {
   const parentDiv = useRef(null);
   const classes = useStyles();
   const el = useMemo(() => document.createElement('div'), []);
@@ -33,22 +33,22 @@ export const AlertPopup: React.FC<IProps> = ({ children, alertStatus, severity, 
 
   const removeParendDiv = () => {
     const modalDiv = el.parentNode;
-    if (!alertStatus && modalDiv) modalDiv.removeChild(el);
+    if (!onOpen && modalDiv) modalDiv.removeChild(el);
   };
 
   useEffect(() => {
-    if (alertStatus) {
+    if (onOpen) {
       document.body.appendChild(el);
     }
 
     setTimeout(() => {
       closePopup();
     }, closePopupDuration);
-  }, [alertStatus, el]);
+  }, [onOpen, el]);
 
   const ModalComponent = createPortal(
     <div className={classes.root} ref={parentDiv}>
-      <Snackbar open={alertStatus} autoHideDuration={closePopupDuration} onClose={closePopup}>
+      <Snackbar open={onOpen} autoHideDuration={closePopupDuration} onClose={closePopup}>
         <Alert onClose={closePopup} severity={severity}>
           {children}
         </Alert>

@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { IUserInfoList } from '@/types/userList';
-import { Box, Button, Typography } from '@material-ui/core';
+import { Box, Button, Fade, Typography, Tooltip } from '@material-ui/core';
 import { Modal } from '@/components/UIkit/Modal/Modal';
 import { useTypedDispatch } from '@/hook/useAppDispatch';
 import { deleteUser } from '@/store/actions/deleteUser';
 import { checkTokenInList } from '@/store/actions/checkTokenInList';
 import { FormChangeData } from '@/components/Modals/Form/FormChangeData';
 import { loginUser } from '@/store/actions/loginUser';
+import { useCheckIsDicrod } from '@/hook/useCheckIsDicrod';
+import { ToolTipButton } from '@/components/UIkit/Button/ToolTipButton/ToolTipButton';
 
 interface IProps {
   data: IUserInfoList;
@@ -27,8 +29,9 @@ const formatEmptyData = <T extends keyof IUserInfoList>(data: Record<T, string>)
 };
 
 export const DataButtonBlock: React.FC<IProps> = ({ data }) => {
-  const [changeDataStatus, setChangeDataStatus] = useState(false);
   const dispatch = useTypedDispatch();
+  const isDiscord = useCheckIsDicrod();
+  const [changeDataStatus, setChangeDataStatus] = useState(false);
 
   const { token, id } = data;
   const initialFormValues = formatEmptyData(data);
@@ -64,11 +67,11 @@ export const DataButtonBlock: React.FC<IProps> = ({ data }) => {
         </Box>
 
         <Box mr={3}>
-          <Button onClick={onLogin}>
+          <ToolTipButton title="You must be on discord" placement="top-end" arrow onClick={onLogin} disabled={!isDiscord}>
             <Typography color="secondary" variant="button">
               LOGIN
             </Typography>
-          </Button>
+          </ToolTipButton>
         </Box>
       </Box>
 
