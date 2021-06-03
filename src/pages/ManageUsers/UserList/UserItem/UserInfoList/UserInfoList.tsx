@@ -8,16 +8,12 @@ interface IProps {
 }
 
 export const UserInfoList: React.FC<IProps> = ({ data }) => {
-  const { token, email, password } = data;
+  const { token, email } = data;
 
   const userDataConfig = [
     {
       title: 'token',
       data: token,
-    },
-    {
-      title: 'password',
-      data: password,
     },
     {
       title: 'email',

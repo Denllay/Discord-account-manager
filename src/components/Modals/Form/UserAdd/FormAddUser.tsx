@@ -7,6 +7,7 @@ import { useTypedDispatch } from '@/hook/useAppDispatch';
 import { addUser } from '@/store/actions/addUser';
 import { checkTokenInList } from '@/store/actions/checkTokenInList';
 import { useGetDataByToken } from '@/hook/useGetDataByToken';
+import { LoaderProgress } from './LoaderProgress';
 import * as Yup from 'yup';
 
 interface IProps {
@@ -25,58 +26,58 @@ const defaultValues: IFormValues = {
 };
 
 const formSchema: Yup.SchemaOf<IFormValues> = Yup.object().shape({
-  token: Yup.string().required('Write your token, bitch'),
+  token: Yup.string().required('Enter token'),
   name: Yup.string().max(15, 'Maximum 15 characters'),
 });
 
-export const FormByToken: React.FC<IProps> = ({ toggleModal, initialValues = defaultValues }) => {
+export const FormAddUser: React.FC<IProps> = ({ toggleModal, initialValues = defaultValues }) => {
   const dispatch = useTypedDispatch();
-  const [error, setError] = useState('');
+  const [errorStatus, setErrorStatus] = useState(false);
   const { isLoading, getDataByToken: checkValidToken } = useGetDataByToken();
 
   const onSubmit = async ({ token, name }: IFormValues, { setSubmitting }: FormikHelpers<IFormValues>) => {
     const isValid = await checkValidToken(token);
-    const formatName = name || '-';
+    const formattedName = name || '-';
 
     if (!!isValid) {
-      dispatch(addUser({ token, name: formatName, password: '-', email: '-' }));
+      dispatch(addUser({ token, name: formattedName, email: '-' }));
       dispatch(checkTokenInList(token));
 
       toggleModal();
     } else {
-      setError('Invalid token');
+      setErrorStatus(true);
     }
 
     setSubmitting(false);
   };
 
   return (
-    <>
-      <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={formSchema}>
-        <Form>
-          <Box display="flex" flexDirection="column" alignItems="center">
-            <Field name="token" placeholder="token*" component={FormInput} />
+    <Box height="100%" display="flex" flexDirection="column" justifyContent="space-around">
+      <Box display="flex" flexDirection="column" alignItems="center">
+        <Box mb={3}>
+          <Typography variant="h1">Add account</Typography>
+        </Box>
 
-            <Box mt={1}>
-              <Field name="name" placeholder="name" component={FormInput} />
+        <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={formSchema}>
+          <Form>
+            <Box display="flex" flexDirection="column" alignItems="center">
+              <Field name="token" placeholder="token*" component={FormInput} />
+
+              <Box mt={1}>
+                <Field name="name" placeholder="name" component={FormInput} />
+              </Box>
+
+              <Box mt={3}>
+                <SubmitButton disabled={isLoading}>SUBMIT</SubmitButton>
+              </Box>
             </Box>
-
-            <Box mt={3}>
-              <SubmitButton disabled={isLoading}>SUBMIT</SubmitButton>
-            </Box>
-          </Box>
-        </Form>
-      </Formik>
-
-      <Box display="flex" justifyContent="center">
-        {!isLoading && (
-          <Typography variant="subtitle1" color="error">
-            {error}
-          </Typography>
-        )}
-
-        {isLoading && <CircularProgress />}
+          </Form>
+        </Formik>
       </Box>
-    </>
+
+      <LoaderProgress isLoading={isLoading} errorStatus={errorStatus}>
+        Invalid token
+      </LoaderProgress>
+    </Box>
   );
 };

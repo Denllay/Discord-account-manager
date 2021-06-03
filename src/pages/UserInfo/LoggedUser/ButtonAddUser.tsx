@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FormByToken } from '@/components/Modals/Form/UserAdd/FormByToken';
+import { FormAddUser } from '@/components/Modals/Form/UserAdd/FormAddUser';
 import { Modal } from '@/components/UIkit/Modal/Modal';
 import { Box, Button } from '@material-ui/core';
 import { useTypedSelector } from '@/hook/useTypedSelector';
@@ -34,7 +34,7 @@ export const ButtonAddUser: React.FC<IProps> = ({ token }) => {
       </Box>
 
       <Modal width="400px" height="220px" onOpen={statusUserModal} toggleModal={toggleUserModal}>
-        <FormByToken initialValues={initialValuesForm} toggleModal={toggleUserModal} />
+        <FormAddUser initialValues={initialValuesForm} toggleModal={toggleUserModal} />
       </Modal>
     </>
   ) : null;

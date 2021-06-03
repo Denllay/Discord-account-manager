@@ -10,18 +10,7 @@ interface IProps {
 
 export const InfoField: React.FC<IProps> = ({ data, title }) => {
   const [copyStatus, setCopyStatus] = useState(false);
-
-  const formatData = () => {
-    if (title === 'password') {
-      const formattedData = data.replace(/./g, '*').substr(0, 15);
-
-      return data === '-' ? data : formattedData;
-    }
-    if (data.length >= 15) {
-      return `${data.substr(0, 15)}...`;
-    }
-    return data;
-  };
+  const formattedData = data.length >= 15 ? `${data.substr(0, 15)}...` : data;
 
   const closeCopyAlert = () => {
     setCopyStatus(false);
@@ -42,7 +31,7 @@ export const InfoField: React.FC<IProps> = ({ data, title }) => {
           <Typography variant="h3">{title}</Typography>
         </Box>
 
-        <Typography variant="subtitle1">{formatData()}</Typography>
+        <Typography variant="subtitle1">{formattedData}</Typography>
       </Box>
 
       <CopyPopup copyData={data} copyStatus={copyStatus} onClose={closeCopyAlert} />

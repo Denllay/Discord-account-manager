@@ -17,16 +17,9 @@ interface IProps {
 type IFormValues = Partial<Omit<IUserInfoList, 'id'>>;
 
 const formSchema: Yup.SchemaOf<IFormValues> = Yup.object().shape({
-  name: Yup.string().max(15, 'Allo! Maximum 15 characters'),
-
-  token: Yup.string().when(['password', 'email'], {
-    is: (password: string, email: string) => password && email,
-    then: Yup.string(),
-    otherwise: Yup.string().required('Email and Password or Token'),
-  }),
-
-  password: Yup.string(),
-  email: Yup.string().email('Enter your email correctly'),
+  name: Yup.string().max(15, 'Maximum 15 characters'),
+  token: Yup.string().required('Enter token'),
+  email: Yup.string().email('Enter email correctly'),
 });
 
 export const FormChangeData: React.FC<IProps> = ({ data: { id, ...initialValues }, toggleModal }) => {
@@ -52,10 +45,6 @@ export const FormChangeData: React.FC<IProps> = ({ data: { id, ...initialValues 
 
           <Box mt={1}>
             <Field name="email" placeholder="email" component={FormInput} />
-          </Box>
-
-          <Box mt={1}>
-            <Field name="password" placeholder="password" component={FormInput} />
           </Box>
 
           <Box mt={3}>

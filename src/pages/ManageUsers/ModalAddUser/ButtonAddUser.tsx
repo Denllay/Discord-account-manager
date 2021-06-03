@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ListButton } from '@/components/UIkit/Button/ListButton/ListButton';
 import { Modal } from '@/components/UIkit/Modal/Modal';
-import { ModalAddUser } from './ModalAddUser';
+import { FormAddUser } from '@/components/Modals/Form/UserAdd/FormAddUser';
 import IconPlus from '@/assets/svg/iconPlus.svg';
 
 export const ButtonAddUser = () => {
@@ -17,7 +17,7 @@ export const ButtonAddUser = () => {
       </ListButton>
 
       <Modal width="400px" height="320px" onOpen={modalStatus} toggleModal={toggleModal}>
-        <ModalAddUser toggleModal={toggleModal} />
+        <FormAddUser toggleModal={toggleModal} />
       </Modal>
     </>
   );
