@@ -8,9 +8,9 @@ chrome.runtime.onMessage.addListener((message: TChromeEvents, _, sendResponse) =
   switch (message.action) {
     case EnumChromeEvents.GET_USER_DATA: {
       const token = localStorage.getItem('token');
-      const formatToken = token && token.replace(/"/g, '');
+      const formattedToken = token && token.replace(/"/g, '');
 
-      sendResponse(formatToken);
+      sendResponse(formattedToken);
       break;
     }
 

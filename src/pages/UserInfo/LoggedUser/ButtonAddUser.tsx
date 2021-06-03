@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FormByToken } from '@/components/Modals/Form/AddUser/FormByToken';
+import { FormByToken } from '@/components/Modals/Form/UserAdd/FormByToken';
 import { Modal } from '@/components/UIkit/Modal/Modal';
 import { Box, Button } from '@material-ui/core';
 import { useTypedSelector } from '@/hook/useTypedSelector';

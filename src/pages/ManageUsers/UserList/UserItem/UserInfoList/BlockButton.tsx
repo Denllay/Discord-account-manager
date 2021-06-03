@@ -9,32 +9,20 @@ import { FormChangeData } from '@/components/Modals/Form/FormChangeData';
 import { loginUser } from '@/store/actions/loginUser';
 import { useCheckIsDicrod } from '@/hook/useCheckIsDicrod';
 import { ToolTipButton } from '@/components/UIkit/Button/ToolTipButton/ToolTipButton';
+import { useFormatDataObj } from '@/hook/useFormatData';
 
 interface IProps {
   data: IUserInfoList;
 }
 
-const formatEmptyData = <T extends keyof IUserInfoList>(data: Record<T, string>) => {
-  let result = {} as Record<T, string>;
-
-  for (const el in data) {
-    if (data[el] === '-') {
-      result[el] = '';
-    } else {
-      result[el] = data[el];
-    }
-  }
-
-  return result;
-};
-
 export const DataButtonBlock: React.FC<IProps> = ({ data }) => {
   const dispatch = useTypedDispatch();
+  const formatDataObj = useFormatDataObj();
   const isDiscord = useCheckIsDicrod();
   const [changeDataStatus, setChangeDataStatus] = useState(false);
 
   const { token, id } = data;
-  const initialFormValues = formatEmptyData(data);
+  const initialFormValues = formatDataObj(data, '-', '');
 
   const onDeleteUser = () => {
     dispatch(deleteUser(id));

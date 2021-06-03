@@ -10,7 +10,7 @@ export const LoggedUser = () => {
   const [copyStatus, setCopyStatus] = useState(false);
   const { token } = useTypedSelector((state) => state.user);
 
-  const formatToken = `${token!.substr(0, 20)}...`;
+  const formattedToken = `${token!.substr(0, 20)}...`;
 
   const closePopup = () => {
     setCopyStatus(false);
@@ -34,7 +34,7 @@ export const LoggedUser = () => {
             </Box>
 
             <Box ml={1}>
-              <Typography variant="subtitle1">{formatToken}</Typography>
+              <Typography variant="subtitle1">{formattedToken}</Typography>
             </Box>
           </Box>
 

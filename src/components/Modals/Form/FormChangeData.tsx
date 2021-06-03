@@ -6,6 +6,7 @@ import { FormInput } from '@/components/UIkit/Input/FormInput';
 import { IUserInfoList } from '@/types/userList';
 import { useTypedDispatch } from '@/hook/useAppDispatch';
 import { changeUserData } from '@/store/actions/changeUserData';
+import { useFormatDataObj } from '@/hook/useFormatData';
 import * as Yup from 'yup';
 
 interface IProps {
@@ -25,16 +26,17 @@ const formSchema: Yup.SchemaOf<IFormValues> = Yup.object().shape({
   }),
 
   password: Yup.string(),
-  email: Yup.string(),
+  email: Yup.string().email('Enter your email correctly'),
 });
 
 export const FormChangeData: React.FC<IProps> = ({ data: { id, ...initialValues }, toggleModal }) => {
   const dispatch = useTypedDispatch();
+  const formatDataObj = useFormatDataObj();
 
-  const onSubmit = ({ name, ...data }: Omit<IUserInfoList, 'id'>) => {
-    const formatName = name || '-';
+  const onSubmit = (data: Omit<IUserInfoList, 'id'>) => {
+    const formattedData = formatDataObj(data, '', '-');
 
-    dispatch(changeUserData({ name: formatName, id, ...data }));
+    dispatch(changeUserData({ id, ...formattedData }));
     toggleModal();
   };
 
@@ -49,7 +51,7 @@ export const FormChangeData: React.FC<IProps> = ({ data: { id, ...initialValues 
           </Box>
 
           <Box mt={1}>
-            <Field name="email" placeholder="email" type="email" component={FormInput} />
+            <Field name="email" placeholder="email" component={FormInput} />
           </Box>
 
           <Box mt={1}>

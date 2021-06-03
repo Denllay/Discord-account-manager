@@ -30,7 +30,7 @@ export const UserInfoList: React.FC<IProps> = ({ data }) => {
   });
 
   return (
-    <Box bgcolor="rgba(255, 255, 255, 0.2)">
+    <Box bgcolor="rgba(255, 255, 255, 0.5)">
       <Box display="flex" flexDirection="column" position="relative" mb={2}>
         {listUserData}
       </Box>

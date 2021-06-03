@@ -1,8 +1,8 @@
 import React from 'react';
-import { BoxAddUser } from '@/components/Modals/Form/AddUser/BoxAddUser';
-import { ChoiceForm } from '@/components/Modals/Form/AddUser/ChoiceForm';
-import { FormByData } from '@/components/Modals/Form/AddUser/FormByData';
-import { FormByToken } from '@/components/Modals/Form/AddUser/FormByToken';
+import { BoxAddUser } from '@/components/Modals/Form/UserAdd/BoxAddUser';
+import { ChoiceForm } from '@/components/Modals/Form/UserAdd/ChoiceForm';
+import { FormByData } from '@/components/Modals/Form/UserAdd/FormByData';
+import { FormByToken } from '@/components/Modals/Form/UserAdd/FormByToken';
 import { useState } from 'react';
 import { TFormStatus } from '@/types/addUser';
 
