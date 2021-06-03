@@ -21,9 +21,22 @@ const Submit = withStyles({
     '&:active': {
       backgroundColor: '#B1FF82',
     },
+
+    '&.Mui-disabled': {
+      pointerEvents: 'auto',
+      cursor: 'not-allowed',
+    },
   },
 })(Button);
 
-export const SubmitButton: React.FC = ({ children }) => {
-  return <Submit type="submit">{children}</Submit>;
+interface IProps {
+  disabled?: boolean;
+}
+
+export const SubmitButton: React.FC<IProps> = ({ children, disabled = false }) => {
+  return (
+    <Submit disabled={disabled} type="submit">
+      {children}
+    </Submit>
+  );
 };

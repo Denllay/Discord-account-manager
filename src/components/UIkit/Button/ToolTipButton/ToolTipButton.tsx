@@ -17,7 +17,7 @@ const Button = withStyles({
   },
 })(MuiButton);
 
-export const ToolTipButton: React.FC<IProps> = ({ onClick, disabled, children, variant = 'text', ...props }) => {
+export const ToolTipButton: React.FC<IProps> = ({ onClick, disabled = false, children, variant = 'text', ...props }) => {
   return (
     <Tooltip {...props}>
       <Button onClick={onClick} disabled={disabled} variant={variant}>

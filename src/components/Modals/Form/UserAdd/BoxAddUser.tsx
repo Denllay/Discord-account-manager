@@ -14,7 +14,7 @@ export const BoxAddUser: React.FC<IProps> = ({ children, setFormStatus }) => {
   };
 
   return (
-    <div>
+    <>
       <Box display="flex" justifyContent="space-between" width="68%" ml={1}>
         <Button startIcon={<IconBack />} size="small" onClick={onBackForm}>
           Back
@@ -23,7 +23,9 @@ export const BoxAddUser: React.FC<IProps> = ({ children, setFormStatus }) => {
         <Typography variant="h1">Add account</Typography>
       </Box>
 
-      <Box mt={3}>{children}</Box>
-    </div>
+      <Box height="99%" display="flex" justifyContent="space-around" flexDirection="column">
+        {children}
+      </Box>
+    </>
   );
 };
