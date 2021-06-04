@@ -19,7 +19,7 @@ export const UserInfo = () => {
     }
   }, [token, isDiscord]);
 
-  const renderInfoByStatus = () => {
+  const renderUserInfo = () => {
     if (accountStatus === 'LOGGED_USER') {
       return <LoggedUser />;
     }
@@ -29,5 +29,5 @@ export const UserInfo = () => {
     return null;
   };
 
-  return renderInfoByStatus();
+  return renderUserInfo();
 };

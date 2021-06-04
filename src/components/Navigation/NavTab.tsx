@@ -1,5 +1,5 @@
 import { IStyledTabProps } from '@/types/navigation';
-import { Box, createStyles, Theme, withStyles } from '@material-ui/core';
+import { createStyles, withStyles } from '@material-ui/core';
 import { Tab } from '@material-ui/core';
 import React from 'react';
 

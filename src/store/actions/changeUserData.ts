@@ -12,5 +12,5 @@ export const changeUserData =
     copyList[changeUserIndex] = data;
     localStorage.setItem('userList', JSON.stringify(copyList));
 
-    dispatch(setChangeData({ data, changeIndex: changeUserIndex }));
+    dispatch(setChangeData({ data, userIndex: changeUserIndex }));
   };

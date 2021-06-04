@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, makeStyles, Typography } from '@material-ui/core';
-import { ListButton } from '@/components/UIkit/Button/ListButton/ListButton';
+import { ListButton } from '@/components/UIkit/Button/ListButton';
 import { IUserInfoList } from '@/types/userList';
 import { UserInfoList } from './UserInfoList/UserInfoList';
 import IconMore from '@/assets/svg/iconMore.svg';
@@ -25,15 +25,16 @@ const useStyles = makeStyles({
 
 export const UserItem: React.FC<IProps> = ({ data }) => {
   const classes = useStyles();
-  const [moreInfoStatus, setMoreInfoStatus] = useState(false);
-  const { token } = useTypedSelector((state) => state.user);
 
+  const [statusMoreInfo, setStatusMoreInfo] = useState(false);
+  const { token } = useTypedSelector((state) => state.user);
   const { name, avatar } = data;
+
   const classToUse = data.token === token ? 'active_wrapper' : 'default_wrapper';
   const formattedName = name.length >= 15 ? `${name.substr(0, 15)}...` : name;
 
-  const onClickMoreInfo = () => {
-    setMoreInfoStatus((prev) => !prev);
+  const onMoreInfo = () => {
+    setStatusMoreInfo((prev) => !prev);
   };
 
   return (
@@ -47,12 +48,12 @@ export const UserItem: React.FC<IProps> = ({ data }) => {
           <Typography variant="h2">{formattedName}</Typography>
         </Box>
 
-        <ListButton onClick={onClickMoreInfo} bgcolor="rgba(255, 199, 0, 0.5)">
+        <ListButton onClick={onMoreInfo} bgcolor="rgba(255, 199, 0, 0.5)">
           <IconMore />
         </ListButton>
       </Box>
 
-      {moreInfoStatus && <UserInfoList data={data} />}
+      {statusMoreInfo && <UserInfoList data={data} />}
     </Box>
   );
 };

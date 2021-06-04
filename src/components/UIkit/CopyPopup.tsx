@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AlertPopup } from '../AlertPopup/AlertPopup';
+import { AlertPopup } from './AlertPopup';
 import { TCopyAlertMode } from '@/types/copyPopup';
 
 interface IProps {

@@ -1,28 +1,29 @@
 import React, { useState } from 'react';
 import { IUserInfoList } from '@/types/userList';
-import { Box, Button, Fade, Typography, Tooltip } from '@material-ui/core';
-import { Modal } from '@/components/UIkit/Modal/Modal';
+import { Box, Button, Typography } from '@material-ui/core';
+import { Modal } from '@/components/UIkit/Modal';
 import { useTypedDispatch } from '@/hook/useAppDispatch';
 import { deleteUser } from '@/store/actions/deleteUser';
 import { checkTokenInList } from '@/store/actions/checkTokenInList';
 import { FormChangeData } from '@/components/Modals/Form/FormChangeData';
 import { loginUser } from '@/store/actions/loginUser';
 import { useCheckIsDicrod } from '@/hook/useCheckIsDicrod';
-import { ToolTipButton } from '@/components/UIkit/Button/ToolTipButton/ToolTipButton';
+import { ToolTipButton } from '@/components/UIkit/Button/ToolTipButton';
 import { useFormatDataObj } from '@/hook/useFormatData';
+import { onMessageChromeEvent } from '@/store/actions/onMessageChromeEvent';
 
 interface IProps {
   data: IUserInfoList;
 }
 
-export const DataButtonBlock: React.FC<IProps> = ({ data }) => {
+export const BlockButton: React.FC<IProps> = ({ data }) => {
   const dispatch = useTypedDispatch();
   const formatDataObj = useFormatDataObj();
   const isDiscord = useCheckIsDicrod();
   const [changeDataStatus, setChangeDataStatus] = useState(false);
 
   const { token, id } = data;
-  const initialFormValues = formatDataObj(data, '-', '');
+  const initialFormChangeData = formatDataObj(data, '-', '');
 
   const onDeleteUser = () => {
     dispatch(deleteUser(id));
@@ -33,8 +34,9 @@ export const DataButtonBlock: React.FC<IProps> = ({ data }) => {
     setChangeDataStatus((prev) => !prev);
   };
 
-  const onLogin = () => {
+  const login = () => {
     dispatch(loginUser(token));
+    dispatch(onMessageChromeEvent());
   };
 
   return (
@@ -55,7 +57,7 @@ export const DataButtonBlock: React.FC<IProps> = ({ data }) => {
         </Box>
 
         <Box mr={3}>
-          <ToolTipButton title="You must be on discord" placement="top-end" arrow onClick={onLogin} disabled={!isDiscord}>
+          <ToolTipButton title="You must be on discord" placement="top-end" arrow onClick={login} disabled={!isDiscord}>
             <Typography color="secondary" variant="button">
               LOGIN
             </Typography>
@@ -63,8 +65,8 @@ export const DataButtonBlock: React.FC<IProps> = ({ data }) => {
         </Box>
       </Box>
 
-      <Modal width="400px" height="300px" onOpen={changeDataStatus} toggleModal={toggleChangeData}>
-        <FormChangeData data={initialFormValues} toggleModal={toggleChangeData} />
+      <Modal width="400px" height="300px" open={changeDataStatus} onClose={toggleChangeData}>
+        <FormChangeData data={initialFormChangeData} toggleModal={toggleChangeData} />
       </Modal>
     </>
   );

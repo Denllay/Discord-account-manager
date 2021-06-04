@@ -15,5 +15,5 @@ export interface IUserListItem extends IAddUserPayload {
 
 export interface ISetChangeData {
   data: IUserListItem;
-  changeIndex: number;
+  userIndex: number;
 }

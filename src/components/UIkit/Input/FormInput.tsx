@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, TextField, Typography, withStyles } from '@material-ui/core';
+import { Box, TextField, Typography } from '@material-ui/core';
 import { FieldProps } from 'formik';
 
 interface IProps extends FieldProps {

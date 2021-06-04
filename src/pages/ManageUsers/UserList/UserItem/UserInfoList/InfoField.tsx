@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Typography, Button } from '@material-ui/core';
-import { CopyPopup } from '@/components/UIkit/CopyPopup/CopyPopup';
+import { CopyPopup } from '@/components/UIkit/CopyPopup';
 import IconCopy from '@/assets/svg/iconCopy.svg';
 
 interface IProps {
@@ -16,7 +16,7 @@ export const InfoField: React.FC<IProps> = ({ data, title }) => {
     setCopyStatus(false);
   };
 
-  const onClickCopyData = () => {
+  const onClickCopy = () => {
     setCopyStatus(true);
   };
 
@@ -25,7 +25,7 @@ export const InfoField: React.FC<IProps> = ({ data, title }) => {
       <Box display="flex" justifyContent="space-between" pt={2} width="80%">
         <Box display="flex" alignItems="center">
           <Box mx={1.5}>
-            <IconCopy style={{ cursor: 'pointer' }} onClick={onClickCopyData} />
+            <IconCopy style={{ cursor: 'pointer' }} onClick={onClickCopy} />
           </Box>
 
           <Typography variant="body1">{title}</Typography>

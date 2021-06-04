@@ -14,11 +14,11 @@ const user = createSlice({
       state.token = payload;
     },
 
-    setAppStatus(state, { payload }: PayloadAction<boolean>) {
+    setLoadedStatus(state, { payload }: PayloadAction<boolean>) {
       state.appLoadedStatus = payload;
     },
   },
 });
 export default user.reducer;
 
-export const { setUserData, setAppStatus } = user.actions;
+export const { setUserData, setLoadedStatus } = user.actions;

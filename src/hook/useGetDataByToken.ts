@@ -1,8 +1,8 @@
+import { useState } from 'react';
 import { IPayloadUserByToken } from '@/types/userPayload';
 import axios from 'axios';
-import { Dispatch, SetStateAction, useState } from 'react';
 
-const apiUrl = 'https://discordapp.com/api/v8/users/@me';
+const api = 'https://discordapp.com/api/v8/';
 
 export const useGetDataByToken = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -12,7 +12,7 @@ export const useGetDataByToken = () => {
     try {
       setIsLoading(true);
 
-      const { data }: IPayloadUserByToken = await axios.get(apiUrl, {
+      const { data }: IPayloadUserByToken = await axios.get(`${api}users/@me`, {
         headers: {
           Authorization: token,
         },
@@ -29,6 +29,7 @@ export const useGetDataByToken = () => {
       return null;
     }
   };
+
   return {
     isLoading,
     errorStatus,

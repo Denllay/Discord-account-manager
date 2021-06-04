@@ -6,6 +6,7 @@ export const theme = createMuiTheme({
     allVariants: {
       color: '#212121',
     },
+
     h1: {
       fontWeight: 700,
       fontSize: 25,

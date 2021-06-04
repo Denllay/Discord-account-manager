@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
-import { SubmitButton } from '@/components/UIkit/Button/SubmitButton/SubmitButton';
+import { SubmitButton } from '@/components/UIkit/Button/SubmitButton';
 import { FormInput } from '@/components/UIkit/Input/FormInput';
 import { IUserInfoList } from '@/types/userList';
 import { useTypedDispatch } from '@/hook/useAppDispatch';

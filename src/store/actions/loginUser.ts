@@ -2,7 +2,7 @@ import { useGetCurrentTab } from '@/hook/useGetCurrentTab';
 import { useTypedSendMessage } from '@/hook/useTypedSendMessage';
 import { EnumChromeEvents } from '@/types/chromeEvents';
 import { AppDispatch, AppThunk } from '..';
-import { setAppStatus, setUserData } from '../reducers/user';
+import { setLoadedStatus, setUserData } from '../reducers/user';
 import { checkTokenInList } from './checkTokenInList';
 
 export const loginUser =
@@ -14,7 +14,7 @@ export const loginUser =
       if (!chrome.runtime.lastError) {
         dispatch(setUserData(token));
         dispatch(checkTokenInList(token));
-        dispatch(setAppStatus(false));
+        dispatch(setLoadedStatus(false));
       }
     };
 

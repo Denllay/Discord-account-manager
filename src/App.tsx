@@ -7,7 +7,6 @@ import { ManageUsers } from './pages/ManageUsers/ManageUsers';
 import { useTypedDispatch } from './hook/useAppDispatch';
 import { getUserData } from './store/actions/getUserData';
 import { getUserList } from './store/actions/getUserList';
-import { onMessageChromeEvent } from './store/actions/onMessageChromeEvent';
 import { useTypedSelector } from './hook/useTypedSelector';
 import { PreLoader } from './components/PreLoader/PreLoader';
 import styles from './App.module.scss';
@@ -18,13 +17,10 @@ export const App = () => {
   const { appLoadedStatus } = useTypedSelector((state) => state.user);
 
   const renderPage = () => {
-    if (!appLoadedStatus) {
-      return <PreLoader />;
-    }
-
     if (page === 'MANAGMENT_USERS') {
       return <ManageUsers />;
     }
+
     if (page === 'USER_INFO') {
       return <UserInfo />;
     }
@@ -34,13 +30,13 @@ export const App = () => {
   useEffect(() => {
     dispatch(getUserList());
     dispatch(getUserData());
-    dispatch(onMessageChromeEvent());
   }, []);
 
   return (
     <div className={styles.App}>
       <Navigation page={page} setPage={setPage} />
-      {renderPage()}
+
+      {appLoadedStatus ? renderPage() : <PreLoader />}
     </div>
   );
 };

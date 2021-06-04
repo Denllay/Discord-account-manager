@@ -1,23 +1,21 @@
 import React, { useState } from 'react';
 import { FormAddUser } from '@/components/Modals/Form/FormAddUser';
-import { Modal } from '@/components/UIkit/Modal/Modal';
+import { Modal } from '@/components/UIkit/Modal';
 import { Box, Button } from '@material-ui/core';
-import { useTypedSelector } from '@/hook/useTypedSelector';
 
 interface IProps {
   token: string;
 }
 
 export const ButtonAddUser: React.FC<IProps> = ({ token }) => {
-  const [statusUserModal, setStatusUserModal] = useState(false);
-  const tokenInList = useTypedSelector((state) => state.userList.tokenInList);
+  const [modalStatus, setModalStatus] = useState(false);
 
   const onAddUser = () => {
-    setStatusUserModal(true);
+    setModalStatus(true);
   };
 
   const toggleUserModal = () => {
-    setStatusUserModal((prev) => !prev);
+    setModalStatus((prev) => !prev);
   };
 
   const initialValuesForm = {
@@ -25,7 +23,7 @@ export const ButtonAddUser: React.FC<IProps> = ({ token }) => {
     name: '',
   };
 
-  return !tokenInList ? (
+  return (
     <>
       <Box mt={1}>
         <Button onClick={onAddUser} color="secondary">
@@ -33,9 +31,9 @@ export const ButtonAddUser: React.FC<IProps> = ({ token }) => {
         </Button>
       </Box>
 
-      <Modal width="400px" height="300px" onOpen={statusUserModal} toggleModal={toggleUserModal}>
+      <Modal width="400px" height="300px" open={modalStatus} onClose={toggleUserModal}>
         <FormAddUser initialValues={initialValuesForm} toggleModal={toggleUserModal} />
       </Modal>
     </>
-  ) : null;
+  );
 };
