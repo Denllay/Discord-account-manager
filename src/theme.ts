@@ -9,24 +9,29 @@ export const theme = createMuiTheme({
 
     h1: {
       fontWeight: 700,
-      fontSize: 25,
+      fontSize: 26,
     },
+
     h2: {
-      fontWeight: 500,
-      fontSize: 21,
-    },
-    h3: {
       fontWeight: 400,
-      fontSize: 16,
+      fontSize: 23,
     },
+
     subtitle1: {
       fontWeight: 300,
       fontSize: 16,
     },
+
     body1: {
       fontWeight: 400,
-      fontSize: 19,
+      fontSize: 18,
     },
+
+    body2: {
+      fontWeight: 300,
+      fontSize: 18,
+    },
+
     button: {
       fontWeight: 500,
       fontSize: 15,

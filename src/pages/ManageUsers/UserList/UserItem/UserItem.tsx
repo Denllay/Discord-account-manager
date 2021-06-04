@@ -45,7 +45,7 @@ export const UserItem: React.FC<IProps> = ({ data }) => {
             <img className={classes.avatar} src={avatar} />
           </Box>
 
-          <Typography variant="h2">{formattedName}</Typography>
+          <Typography variant="body1">{formattedName}</Typography>
         </Box>
 
         <ListButton onClick={onMoreInfo} bgcolor="rgba(255, 199, 0, 0.5)">

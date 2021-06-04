@@ -28,7 +28,7 @@ export const InfoField: React.FC<IProps> = ({ data, title }) => {
             <IconCopy style={{ cursor: 'pointer' }} onClick={onClickCopy} />
           </Box>
 
-          <Typography variant="body1">{title}</Typography>
+          <Typography variant="body2">{title}</Typography>
         </Box>
 
         <Typography variant="subtitle1">{formattedData}</Typography>

@@ -9,11 +9,12 @@ import { getUserData } from './store/actions/getUserData';
 import { getUserList } from './store/actions/getUserList';
 import { useTypedSelector } from './hook/useTypedSelector';
 import { PreLoader } from './components/PreLoader/PreLoader';
+import { AboutInfo } from './pages/AboutInfo/AboutInfo';
 import styles from './App.module.scss';
 
 export const App = () => {
   const dispatch = useTypedDispatch();
-  const [page, setPage] = useState<TAppPages>('MANAGMENT_USERS');
+  const [page, setPage] = useState<TAppPages>('USER_INFO');
   const { appLoadedStatus } = useTypedSelector((state) => state.user);
 
   const renderPage = () => {
@@ -24,6 +25,11 @@ export const App = () => {
     if (page === 'USER_INFO') {
       return <UserInfo />;
     }
+
+    if (page === 'ABOUT_INFO') {
+      return <AboutInfo />;
+    }
+
     return null;
   };
 

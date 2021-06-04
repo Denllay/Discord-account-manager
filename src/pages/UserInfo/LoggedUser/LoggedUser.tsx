@@ -31,7 +31,7 @@ export const LoggedUser = () => {
             <IconCopy onClick={copy} style={{ cursor: 'pointer' }} />
 
             <Box ml={1}>
-              <Typography variant="h3">Token:</Typography>
+              <Typography variant="body1">Token:</Typography>
             </Box>
 
             <Box ml={1}>
