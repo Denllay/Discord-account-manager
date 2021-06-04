@@ -3,8 +3,9 @@ import { Box, makeStyles, Typography } from '@material-ui/core';
 import { ListButton } from '@/components/UIkit/Button/ListButton';
 import { IUserInfoList } from '@/types/userList';
 import { UserInfoList } from './UserInfoList/UserInfoList';
-import IconMore from '@/assets/svg/iconMore.svg';
 import { useTypedSelector } from '@/hook/useTypedSelector';
+import IconMore from '@/assets/svg/iconMore.svg';
+import defaultAvatar from '@/assets/img/default_avatar.jpg';
 
 interface IProps {
   data: IUserInfoList;
@@ -20,6 +21,7 @@ const useStyles = makeStyles({
   avatar: {
     borderRadius: '2px',
     height: '22px',
+    background: '#c4c4c4',
   },
 });
 
@@ -37,12 +39,17 @@ export const UserItem: React.FC<IProps> = ({ data }) => {
     setStatusMoreInfo((prev) => !prev);
   };
 
+  const onErrorImg = (e: React.ChangeEvent<HTMLImageElement>) => {
+    e.target.onerror = null;
+    e.target.src = defaultAvatar;
+  };
+
   return (
     <Box mt={1.5}>
       <Box className={classes[classToUse]} display="flex" alignItems="center" justifyContent="space-between">
         <Box ml={2} display="flex">
           <Box mr={2} display="flex" alignItems="center">
-            <img className={classes.avatar} src={avatar} />
+            <img className={classes.avatar} src={avatar} onError={onErrorImg} />
           </Box>
 
           <Typography variant="body1">{formattedName}</Typography>

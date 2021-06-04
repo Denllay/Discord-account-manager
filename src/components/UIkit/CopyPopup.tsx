@@ -9,23 +9,15 @@ interface IProps {
 }
 
 export const CopyPopup: React.FC<IProps> = ({ copyData, copyStatus, onClose }) => {
-  const [alertMode, setAlertMode] = useState<TCopyAlertMode | null>(null);
-  const copyTitleByMode = alertMode === 'success' ? 'Sucsess copy!' : 'Empty field!';
-
   useEffect(() => {
-    if (copyData !== '-' && copyStatus) {
+    if (copyStatus) {
       navigator.clipboard.writeText(copyData);
-      setAlertMode('success');
-    } else {
-      setAlertMode('error');
     }
   }, [copyData, copyStatus]);
 
   return (
-    alertMode && (
-      <AlertPopup onClose={onClose} onOpen={copyStatus} severity={alertMode!}>
-        {copyTitleByMode}
-      </AlertPopup>
-    )
+    <AlertPopup onClose={onClose} onOpen={copyStatus} severity="success">
+      Sucsess copy!
+    </AlertPopup>
   );
 };

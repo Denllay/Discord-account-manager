@@ -19,6 +19,8 @@ export const useGetDataByToken = () => {
       });
 
       setIsLoading(false);
+      console.log(data);
+
       return data;
     } catch (e) {
       console.log(e);
