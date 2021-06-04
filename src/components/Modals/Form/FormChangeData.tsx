@@ -1,57 +1,89 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
-import { Formik, Field, Form } from 'formik';
+import { Formik, Field, Form, FormikHelpers } from 'formik';
 import { SubmitButton } from '@/components/UIkit/Button/SubmitButton/SubmitButton';
 import { FormInput } from '@/components/UIkit/Input/FormInput';
 import { IUserInfoList } from '@/types/userList';
 import { useTypedDispatch } from '@/hook/useAppDispatch';
 import { changeUserData } from '@/store/actions/changeUserData';
-import { useFormatDataObj } from '@/hook/useFormatData';
+import { useGetDataByToken } from '@/hook/useGetDataByToken';
+import { LoaderProgress } from '@/components/LoaderProgress/LoaderProgress';
 import * as Yup from 'yup';
 
 interface IProps {
   data: IUserInfoList;
   toggleModal(): void;
 }
+interface ISetNewData {
+  token: string;
+  name: string;
+  setSubmitting: (isSubmitting: boolean) => void;
+}
 
-type IFormValues = Partial<Omit<IUserInfoList, 'id'>>;
+type IFormValues = Omit<IUserInfoList, 'id' | 'avatar' | 'email'>;
 
-const formSchema: Yup.SchemaOf<IFormValues> = Yup.object().shape({
+const formSchema: Yup.SchemaOf<Partial<IFormValues>> = Yup.object().shape({
   name: Yup.string().max(15, 'Maximum 15 characters'),
   token: Yup.string().required('Enter token'),
   email: Yup.string().email('Enter email correctly'),
 });
 
-export const FormChangeData: React.FC<IProps> = ({ data: { id, ...initialValues }, toggleModal }) => {
+export const FormChangeData: React.FC<IProps> = ({ data: { id, avatar, email, ...initialValues }, toggleModal }) => {
   const dispatch = useTypedDispatch();
-  const formatDataObj = useFormatDataObj();
+  const { isLoading, errorStatus, getDataByToken } = useGetDataByToken();
 
-  const onSubmit = (data: Omit<IUserInfoList, 'id'>) => {
-    const formattedData = formatDataObj(data, '', '-');
+  const onSubmit = async ({ token, name }: IFormValues, { setSubmitting }: FormikHelpers<IFormValues>) => {
+    const formattedName = name || '-';
 
-    dispatch(changeUserData({ id, ...formattedData }));
+    if (token === initialValues.token) {
+      setNewName({ token, name: formattedName, setSubmitting });
+    } else {
+      setNewToken({ token, name: formattedName, setSubmitting });
+    }
+  };
+
+  const setNewName = ({ setSubmitting, ...userData }: ISetNewData) => {
+    dispatch(changeUserData({ id, avatar, email, ...userData }));
+
     toggleModal();
+    setSubmitting(false);
+  };
+
+  const setNewToken = async ({ token, name, setSubmitting }: ISetNewData) => {
+    const userData = await getDataByToken(token);
+
+    if (!!userData) {
+      const { email, avatar: avatarId, id: UserId } = userData!;
+      const avatar = `https://cdn.discordapp.com/avatars/${UserId}/${avatarId}.png?size=32`;
+
+      dispatch(changeUserData({ id, avatar, token, email, name }));
+
+      toggleModal();
+      setSubmitting(false);
+    }
   };
 
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={formSchema}>
-      <Form>
-        <Box display="flex" flexDirection="column" alignItems="center">
-          <Field name="name" placeholder="name" component={FormInput} />
+    <Box height="100%" display="flex" flexDirection="column" justifyContent="space-around">
+      <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={formSchema}>
+        <Form>
+          <Box display="flex" flexDirection="column" alignItems="center">
+            <Field name="name" placeholder="name" component={FormInput} />
 
-          <Box mt={1}>
-            <Field name="token" placeholder="token" component={FormInput} />
-          </Box>
+            <Box mt={1}>
+              <Field name="token" placeholder="token" component={FormInput} />
+            </Box>
 
-          <Box mt={1}>
-            <Field name="email" placeholder="email" component={FormInput} />
+            <Box mt={3}>
+              <SubmitButton>SUBMIT</SubmitButton>
+            </Box>
           </Box>
+        </Form>
+      </Formik>
 
-          <Box mt={3}>
-            <SubmitButton>SUBMIT</SubmitButton>
-          </Box>
-        </Box>
-      </Form>
-    </Formik>
+      <LoaderProgress isLoading={isLoading} errorStatus={errorStatus}>
+        Invalid token
+      </LoaderProgress>
+    </Box>
   );
 };

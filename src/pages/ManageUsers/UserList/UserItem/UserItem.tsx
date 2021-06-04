@@ -17,6 +17,10 @@ const useStyles = makeStyles({
   active_wrapper: {
     background: 'rgba(255, 199, 0, 0.5)',
   },
+  avatar: {
+    borderRadius: '2px',
+    height: '22px',
+  },
 });
 
 export const UserItem: React.FC<IProps> = ({ data }) => {
@@ -24,7 +28,9 @@ export const UserItem: React.FC<IProps> = ({ data }) => {
   const [moreInfoStatus, setMoreInfoStatus] = useState(false);
   const { token } = useTypedSelector((state) => state.user);
 
+  const { name, avatar } = data;
   const classToUse = data.token === token ? 'active_wrapper' : 'default_wrapper';
+  const formattedName = name.length >= 15 ? `${name.substr(0, 15)}...` : name;
 
   const onClickMoreInfo = () => {
     setMoreInfoStatus((prev) => !prev);
@@ -33,8 +39,12 @@ export const UserItem: React.FC<IProps> = ({ data }) => {
   return (
     <Box mt={1.5}>
       <Box className={classes[classToUse]} display="flex" alignItems="center" justifyContent="space-between">
-        <Box ml={2}>
-          <Typography variant="h3">{data.name}</Typography>
+        <Box ml={2} display="flex">
+          <Box mr={2} display="flex" alignItems="center">
+            <img className={classes.avatar} src={avatar} />
+          </Box>
+
+          <Typography variant="h2">{formattedName}</Typography>
         </Box>
 
         <ListButton onClick={onClickMoreInfo} bgcolor="rgba(255, 199, 0, 0.5)">

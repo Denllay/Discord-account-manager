@@ -7,6 +7,7 @@ export interface IAddUserPayload {
   token: string;
   name: string;
   email: string;
+  avatar: string;
 }
 export interface IUserListItem extends IAddUserPayload {
   id: string;

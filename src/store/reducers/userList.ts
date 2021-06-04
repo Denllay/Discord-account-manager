@@ -27,9 +27,6 @@ const userList = createSlice({
     },
 
     setChangeData(state, { payload: { data, changeIndex } }: PayloadAction<ISetChangeData>) {
-      console.log(data);
-      console.log(changeIndex);
-
       state.list[changeIndex] = data;
     },
   },

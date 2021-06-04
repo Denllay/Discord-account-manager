@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ListButton } from '@/components/UIkit/Button/ListButton/ListButton';
 import { Modal } from '@/components/UIkit/Modal/Modal';
-import { FormAddUser } from '@/components/Modals/Form/UserAdd/FormAddUser';
+import { FormAddUser } from '@/components/Modals/Form/FormAddUser';
 import IconPlus from '@/assets/svg/iconPlus.svg';
 
 export const ButtonAddUser = () => {

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Box, Typography, CircularProgress } from '@material-ui/core';
+import React from 'react';
+import { Box, Typography } from '@material-ui/core';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import { SubmitButton } from '@/components/UIkit/Button/SubmitButton/SubmitButton';
 import { FormInput } from '@/components/UIkit/Input/FormInput';
@@ -7,7 +7,7 @@ import { useTypedDispatch } from '@/hook/useAppDispatch';
 import { addUser } from '@/store/actions/addUser';
 import { checkTokenInList } from '@/store/actions/checkTokenInList';
 import { useGetDataByToken } from '@/hook/useGetDataByToken';
-import { LoaderProgress } from './LoaderProgress';
+import { LoaderProgress } from '../../LoaderProgress/LoaderProgress';
 import * as Yup from 'yup';
 
 interface IProps {
@@ -32,23 +32,22 @@ const formSchema: Yup.SchemaOf<IFormValues> = Yup.object().shape({
 
 export const FormAddUser: React.FC<IProps> = ({ toggleModal, initialValues = defaultValues }) => {
   const dispatch = useTypedDispatch();
-  const [errorStatus, setErrorStatus] = useState(false);
-  const { isLoading, getDataByToken: checkValidToken } = useGetDataByToken();
+  const { isLoading, errorStatus, getDataByToken } = useGetDataByToken();
 
   const onSubmit = async ({ token, name }: IFormValues, { setSubmitting }: FormikHelpers<IFormValues>) => {
-    const isValid = await checkValidToken(token);
+    const userData = await getDataByToken(token);
     const formattedName = name || '-';
 
-    if (!!isValid) {
-      dispatch(addUser({ token, name: formattedName, email: '-' }));
+    if (!!userData) {
+      const { email, avatar: avatarId, id } = userData!;
+      const avatar = `https://cdn.discordapp.com/avatars/${id}/${avatarId}.png?size=32`;
+
+      dispatch(addUser({ token, email, avatar, name: formattedName }));
       dispatch(checkTokenInList(token));
 
       toggleModal();
-    } else {
-      setErrorStatus(true);
+      setSubmitting(false);
     }
-
-    setSubmitting(false);
   };
 
   return (

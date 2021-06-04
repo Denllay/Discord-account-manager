@@ -22,13 +22,13 @@ export const InfoField: React.FC<IProps> = ({ data, title }) => {
 
   return (
     <>
-      <Box display="flex" alignItems="center" justifyContent="space-between" width="80%">
-        <Box display="flex">
-          <Box display="flex" mx={1.5}>
+      <Box display="flex" justifyContent="space-between" pt={2} width="80%">
+        <Box display="flex" alignItems="center">
+          <Box mx={1.5}>
             <IconCopy style={{ cursor: 'pointer' }} onClick={onClickCopyData} />
           </Box>
 
-          <Typography variant="h3">{title}</Typography>
+          <Typography variant="body1">{title}</Typography>
         </Box>
 
         <Typography variant="subtitle1">{formattedData}</Typography>
