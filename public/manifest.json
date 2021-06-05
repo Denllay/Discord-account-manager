@@ -1,6 +1,6 @@
 {
-  "name": "Discord ama ama boss",
-  "description": "беги fackin slave",
+  "name": "Discord account manager",
+  "description": "An extension for your browser to manage multiple accounts.",
   "manifest_version": 2,
   "version": "1.0.0",
   "browser_action": {
