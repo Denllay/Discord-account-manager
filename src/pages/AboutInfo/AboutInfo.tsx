@@ -7,17 +7,10 @@ import styles from './AboutInfo.module.scss';
 export const AboutInfo = () => {
   const onClickLink = (url: string) => {
     if (url === 'MEME') {
-      chrome.tabs.create({ url: getRandomMem() });
+      chrome.tabs.create({ url });
     } else {
       chrome.tabs.create({ url });
     }
-  };
-
-  const getRandomMem = () => {
-    const rickRoll = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
-    const babyShark = 'https://www.youtube.com/watch?v=XqZsoesa55w';
-
-    return Math.random() > 0.5 ? babyShark : rickRoll;
   };
 
   return (
@@ -28,7 +21,7 @@ export const AboutInfo = () => {
 
       <Box display="flex" flexDirection="column" mb={2}>
         <Box display="flex">
-          <Typography variant="body1">Developers:</Typography>
+          <Typography variant="body1">Developers: </Typography>
           <Typography variant="body2">Denllay, Dizel</Typography>
         </Box>
 
@@ -37,7 +30,7 @@ export const AboutInfo = () => {
             <IconGitHub style={{ cursor: 'pointer' }} />
           </Box>
 
-          <Box onClick={() => onClickLink('MEME')}>
+          <Box onClick={() => onClickLink('https://discord.gg/uGJGtbAQPe')}>
             <IconDiscord style={{ cursor: 'pointer' }} />
           </Box>
         </Box>
