@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Typography, Button } from '@material-ui/core';
 import { CopyPopup } from '@/components/UIkit/CopyPopup';
+import { Icon } from '@/components/UIkit/Icon';
 import IconCopy from '@/assets/svg/iconCopy.svg';
 
 interface IProps {
@@ -25,7 +26,9 @@ export const InfoField: React.FC<IProps> = ({ data, title }) => {
       <Box display="flex" justifyContent="space-between" pt={2} width="80%">
         <Box display="flex" alignItems="center">
           <Box mx={1.5}>
-            <IconCopy style={{ cursor: 'pointer' }} onClick={onClickCopy} />
+            <Icon>
+              <IconCopy onClick={onClickCopy} />
+            </Icon>
           </Box>
 
           <Typography variant="body2">{title}</Typography>

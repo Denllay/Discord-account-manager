@@ -1,10 +1,17 @@
 import React from 'react';
-import { Typography, Box } from '@material-ui/core';
+import { PageWrapper } from '@/components/PageWrapper/PageWrapper';
+import { Typography } from '@material-ui/core';
+
+const flexWrapperStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+};
 
 export const Unaccounted = () => {
   return (
-    <Box height="100vh" display="flex" justifyContent="center" alignItems="center" bgcolor="#f5f5f5">
+    <PageWrapper flexStyle={flexWrapperStyle}>
       <Typography variant="h1">Discord is not available</Typography>
-    </Box>
+    </PageWrapper>
   );
 };

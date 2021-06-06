@@ -4,6 +4,7 @@ import { IUserState } from '../types/user';
 const initialState: IUserState = {
   token: null,
   appLoadedStatus: true,
+  isDarkMode: true,
 };
 
 const user = createSlice({
@@ -17,8 +18,13 @@ const user = createSlice({
     setLoadedStatus(state, { payload }: PayloadAction<boolean>) {
       state.appLoadedStatus = payload;
     },
+
+    setTheme(state, { payload }: PayloadAction<boolean>) {
+      state.isDarkMode = payload;
+    },
   },
 });
+
 export default user.reducer;
 
-export const { setUserData, setLoadedStatus } = user.actions;
+export const { setUserData, setLoadedStatus, setTheme } = user.actions;

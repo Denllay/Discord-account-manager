@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { Modal as ModalUI, Fade, Backdrop, makeStyles } from '@material-ui/core';
+import { Modal as ModalUI, Fade, Backdrop, makeStyles, Theme } from '@material-ui/core';
 
 interface IProps {
   open: boolean;
@@ -8,21 +8,22 @@ interface IProps {
   onClose(): void;
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(({ palette }: Theme) => ({
   modal: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   modal_content: {
-    position: 'relative',
-    background: '#ffffff',
-    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-    borderRadius: '2px',
-    paddingTop: '22px',
+    background: palette.info.main,
+    borderRadius: 2,
+    paddingTop: 22,
     outline: 0,
+    position: 'relative',
+    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
   },
-});
+}));
 
 export const Modal: React.FC<IProps> = ({ open, onClose, width, height, children }) => {
   const classes = useStyles();

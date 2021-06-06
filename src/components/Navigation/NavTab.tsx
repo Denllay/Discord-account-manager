@@ -9,8 +9,8 @@ export const NavTab = withStyles(() =>
       textTransform: 'none',
       color: '#FFC700',
       fontWeight: 700,
-      fontSize: '18px',
-      padding: '0px 12px',
+      fontSize: '17px',
+      padding: '0px 8px',
     },
   })
 )((props: IStyledTabProps) => <Tab disableRipple {...props} />);

@@ -1,10 +1,22 @@
 import React, { useState } from 'react';
 import { Typography, Box } from '@material-ui/core';
 import { useTypedSelector } from '@/hook/useTypedSelector';
+import { PageWrapper } from '@/components/PageWrapper/PageWrapper';
 import { ButtonAddUser } from './ButtonAddUser';
 import { CopyPopup } from '@/components/UIkit/CopyPopup';
+import { Icon } from '@/components/UIkit/Icon';
 import IconCopy from '@/assets/svg/iconCopy.svg';
-import styles from './LoggedUser.module.scss';
+import background from '@/assets/img/background_account_info.png';
+
+const flexWrapperStyle: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+};
+
+const bgWrapperStyle = {
+  backgroundSize: 'contain',
+  backgroundPosition: 'right',
+};
 
 export const LoggedUser = () => {
   const [copyStatus, setCopyStatus] = useState(false);
@@ -23,25 +35,25 @@ export const LoggedUser = () => {
 
   return (
     <>
-      <div className={styles.wrapper}>
-        <Box pt={4.4} pl={2}>
-          <Typography variant="h1">Account</Typography>
+      <PageWrapper bgUrl={background} flexStyle={flexWrapperStyle} bgStyle={bgWrapperStyle}>
+        <Typography variant="h1">Account</Typography>
 
-          <Box display="flex" alignItems="center" mt={2.5}>
-            <IconCopy onClick={copy} style={{ cursor: 'pointer' }} />
+        <Box display="flex" alignItems="center" mt={2.5}>
+          <Icon>
+            <IconCopy onClick={copy} />
+          </Icon>
 
-            <Box ml={1}>
-              <Typography variant="body1">Token:</Typography>
-            </Box>
-
-            <Box ml={1}>
-              <Typography variant="subtitle1">{formattedToken}</Typography>
-            </Box>
+          <Box ml={1}>
+            <Typography variant="body1">Token:</Typography>
           </Box>
 
-          {!tokenInList && <ButtonAddUser token={token!} />}
+          <Box ml={1}>
+            <Typography variant="subtitle1">{formattedToken}</Typography>
+          </Box>
         </Box>
-      </div>
+
+        {!tokenInList && <ButtonAddUser token={token!} />}
+      </PageWrapper>
 
       <CopyPopup copyStatus={copyStatus} copyData={token!} onClose={closePopup} />
     </>

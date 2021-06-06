@@ -39,8 +39,7 @@ export const FormAddUser: React.FC<IProps> = ({ toggleModal, initialValues = def
     const formattedName = name || '-';
 
     if (!!userData) {
-      const { email, avatar: avatarId, id } = userData!;
-      const avatar = `https://cdn.discordapp.com/avatars/${id}/${avatarId}.png?size=32`;
+      const { email, avatar } = userData!;
 
       dispatch(addUser({ token, email, avatar, name: formattedName }));
       dispatch(checkTokenInList(token));

@@ -20,13 +20,16 @@ export const UserInfo = () => {
   }, [token, isDiscord]);
 
   const renderUserInfo = () => {
-    if (accountStatus === 'LOGGED_USER') {
-      return <LoggedUser />;
+    switch (accountStatus) {
+      case 'LOGGED_USER':
+        return <LoggedUser />;
+
+      case 'UNACCOUNTED':
+        return <Unaccounted />;
+
+      default:
+        return null;
     }
-    if (accountStatus === 'UNACCOUNTED') {
-      return <Unaccounted />;
-    }
-    return null;
   };
 
   return renderUserInfo();

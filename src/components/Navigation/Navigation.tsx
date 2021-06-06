@@ -1,8 +1,12 @@
 import React, { SetStateAction } from 'react';
-import { Box, Tabs, withStyles } from '@material-ui/core';
 import { IStyledTabsProps, TAppPages, TOnchangeTab } from '@/types/navigation';
+import { Box, Tabs, withStyles } from '@material-ui/core';
+import { SwitchTheme } from '../SwitchTheme/SwitchTheme';
 import { NavTab } from './NavTab';
 import { Dispatch } from 'react';
+import { useTypedSelector } from '@/hook/useTypedSelector';
+import { useTypedDispatch } from '@/hook/useAppDispatch';
+import { setThemeLocalStorage } from '@/store/actions/setThemeLocalStorage';
 
 interface IProps {
   page: TAppPages;
@@ -23,12 +27,19 @@ const NavTabs = withStyles({
 })((props: IStyledTabsProps) => <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />);
 
 export const Navigation: React.FC<IProps> = ({ page, setPage }) => {
+  const { isDarkMode } = useTypedSelector((state) => state.user);
+  const dispatch = useTypedDispatch();
+
   const onChangePage: TOnchangeTab = (_, newPage) => {
     setPage(newPage);
   };
 
+  const onChangeTheme = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(setThemeLocalStorage(target.checked));
+  };
+
   return (
-    <Box alignItems="center" display="flex" bgcolor="#363636">
+    <Box alignItems="center" display="flex" justifyContent="space-between" bgcolor="#363636">
       <NavTabs value={page} onChange={onChangePage}>
         <NavTab label="Your account" value="USER_INFO" />
 
@@ -36,6 +47,10 @@ export const Navigation: React.FC<IProps> = ({ page, setPage }) => {
 
         <NavTab label="About info" value="ABOUT_INFO" />
       </NavTabs>
+
+      <Box mr={3}>
+        <SwitchTheme onChange={onChangeTheme} checked={isDarkMode} />
+      </Box>
     </Box>
   );
 };

@@ -3,6 +3,7 @@ import { ListButton } from '@/components/UIkit/Button/ListButton';
 import { Box, Typography } from '@material-ui/core';
 import { Modal } from '@/components/UIkit/Modal';
 import { FormAddUser } from '@/components/Modals/Form/FormAddUser';
+import { Icon } from '@/components/UIkit/Icon';
 import IconPlus from '@/assets/svg/iconPlus.svg';
 
 export const TopBlock = () => {
@@ -17,8 +18,10 @@ export const TopBlock = () => {
       <Box display="flex" justifyContent="space-between">
         <Typography variant="h1">Accounts list</Typography>
 
-        <ListButton bgcolor="rgba(2, 255, 58, 0.5)" onClick={toggleModal}>
-          <IconPlus />
+        <ListButton onClick={toggleModal} bgcolor="rgba(2, 255, 58, 0.5)">
+          <Icon>
+            <IconPlus />
+          </Icon>
         </ListButton>
       </Box>
 

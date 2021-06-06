@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Box, makeStyles, Typography } from '@material-ui/core';
-import { ListButton } from '@/components/UIkit/Button/ListButton';
+import { Box, makeStyles, Theme, Typography } from '@material-ui/core';
+import { ButtonInfoMore } from '@/components/UIkit/Button/ButtonInfoMore';
 import { IUserInfoList } from '@/types/userList';
 import { UserInfoList } from './UserInfoList/UserInfoList';
 import { useTypedSelector } from '@/hook/useTypedSelector';
@@ -11,19 +11,19 @@ interface IProps {
   data: IUserInfoList;
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(({ palette }: Theme) => ({
   default_wrapper: {
-    background: 'rgba(255, 255, 255, 0.5)',
+    background: `${palette.background.default}7F`,
   },
   active_wrapper: {
-    background: 'rgba(255, 199, 0, 0.5)',
+    background: `${palette.primary.main}7F`,
   },
   avatar: {
     borderRadius: '2px',
     height: '22px',
     background: '#c4c4c4',
   },
-});
+}));
 
 export const UserItem: React.FC<IProps> = ({ data }) => {
   const classes = useStyles();
@@ -55,9 +55,9 @@ export const UserItem: React.FC<IProps> = ({ data }) => {
           <Typography variant="body1">{formattedName}</Typography>
         </Box>
 
-        <ListButton onClick={onMoreInfo} bgcolor="rgba(255, 199, 0, 0.5)">
+        <ButtonInfoMore onClick={onMoreInfo}>
           <IconMore />
-        </ListButton>
+        </ButtonInfoMore>
       </Box>
 
       {statusMoreInfo && <UserInfoList data={data} />}

@@ -1,34 +1,28 @@
-import { makeStyles } from '@material-ui/core';
+import { Box, makeStyles } from '@material-ui/core';
 import React from 'react';
 
 interface IProps {
-  onClick(): void;
-  size?: ISize;
   bgcolor: string;
-}
-
-interface ISize {
-  width: string;
-  height: string;
+  onClick(): void;
 }
 
 const useStyles = makeStyles({
   button: {
     cursor: 'pointer',
-    width: '32px',
-    height: '32px',
-    background: '#ffffff',
+    width: 32,
+    height: 32,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
   },
 });
 
-export const ListButton: React.FC<IProps> = ({ onClick, size, bgcolor, children }) => {
+export const ListButton: React.FC<IProps> = ({ bgcolor, onClick, children }) => {
   const classes = useStyles();
+
   return (
-    <div className={classes.button} onClick={onClick} style={{ ...size, background: bgcolor }}>
+    <Box onClick={onClick} className={classes.button} bgcolor={bgcolor}>
       {children}
-    </div>
+    </Box>
   );
 };

@@ -18,10 +18,12 @@ export const useGetDataByToken = () => {
         },
       });
 
-      setIsLoading(false);
-      console.log(data);
+      const { avatar: avatarId, id, ...userData } = data;
+      const avatar = `https://cdn.discordapp.com/avatars/${id}/${avatarId}.png?size=32`;
 
-      return data;
+      setIsLoading(false);
+
+      return { avatar, id, ...userData };
     } catch (e) {
       console.log(e);
 

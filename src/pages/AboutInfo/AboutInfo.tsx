@@ -1,27 +1,29 @@
 import React from 'react';
 import { Box, Typography } from '@material-ui/core';
-import IconDiscord from '@/assets/svg/iconDiscord.svg';
+import { PageWrapper } from '@/components/PageWrapper/PageWrapper';
 import IconGitHub from '@/assets/svg/iconGitHub.svg';
-import styles from './AboutInfo.module.scss';
+import background from '@/assets/img/background_about_info.png';
+
+const gitHubUrl = 'https://github.com/Denllay/Discord-account-manager';
+
+const onClickLink = () => {
+  chrome.tabs.create({ url: gitHubUrl });
+};
+
+const flexWrapperStyle: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+};
+
+const bgWrapperStyle = {
+  backgroundSize: '60%',
+  backgroundPosition: 'bottom right',
+};
 
 export const AboutInfo = () => {
-  const onClickLink = (url: string) => {
-    if (url === 'MEME') {
-      chrome.tabs.create({ url: getRandomMem() });
-    } else {
-      chrome.tabs.create({ url });
-    }
-  };
-
-  const getRandomMem = () => {
-    const rickRoll = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
-    const babyShark = 'https://www.youtube.com/watch?v=XqZsoesa55w';
-
-    return Math.random() > 0.5 ? babyShark : rickRoll;
-  };
-
   return (
-    <div className={styles.wrapper}>
+    <PageWrapper bgUrl={background} bgStyle={bgWrapperStyle} flexStyle={flexWrapperStyle}>
       <Box mt={1}>
         <Typography variant="h2">Google chrome extension for managment Discord accounts</Typography>
       </Box>
@@ -33,15 +35,11 @@ export const AboutInfo = () => {
         </Box>
 
         <Box display="flex">
-          <Box mr={2} onClick={() => onClickLink('https://github.com/Denllay/Discord-account-manager')}>
+          <Box mr={2} onClick={onClickLink}>
             <IconGitHub style={{ cursor: 'pointer' }} />
-          </Box>
-
-          <Box onClick={() => onClickLink('MEME')}>
-            <IconDiscord style={{ cursor: 'pointer' }} />
           </Box>
         </Box>
       </Box>
-    </div>
+    </PageWrapper>
   );
 };

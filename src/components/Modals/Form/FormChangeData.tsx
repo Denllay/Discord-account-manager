@@ -53,8 +53,7 @@ export const FormChangeData: React.FC<IProps> = ({ data: { id, avatar, email, ..
     const userData = await getDataByToken(token);
 
     if (!!userData) {
-      const { email, avatar: avatarId, id: UserId } = userData!;
-      const avatar = `https://cdn.discordapp.com/avatars/${UserId}/${avatarId}.png?size=32`;
+      const { email, avatar, id } = userData!;
 
       dispatch(changeUserData({ id, avatar, token, email, name }));
 

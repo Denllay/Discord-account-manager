@@ -1,12 +1,12 @@
 import React from 'react';
-import { withStyles, Button } from '@material-ui/core';
+import { withStyles, Button, Theme } from '@material-ui/core';
 
-const Submit = withStyles({
+const Submit = withStyles(({ palette }: Theme) => ({
   root: {
-    borderRadius: '5px',
+    borderRadius: 5,
     boxShadow: 'none',
     padding: '5px 25px',
-    backgroundColor: '#A0FE67',
+    backgroundColor: palette.secondary.main,
     fontSize: 14,
     fontFamily: 'Rubik, sans-serif',
     fontWeight: 400,
@@ -27,7 +27,7 @@ const Submit = withStyles({
       cursor: 'not-allowed',
     },
   },
-})(Button);
+}))(Button);
 
 interface IProps {
   disabled?: boolean;

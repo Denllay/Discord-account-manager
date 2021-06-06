@@ -10,11 +10,11 @@ interface IProps {
   onClose(): void;
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(({ spacing }) => ({
   root: {
     width: '100%',
     '& > * + *': {
-      marginTop: theme.spacing(2),
+      marginTop: spacing(2),
     },
   },
 }));

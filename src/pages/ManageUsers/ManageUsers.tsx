@@ -1,14 +1,20 @@
 import React from 'react';
+import { PageWrapper } from '@/components/PageWrapper/PageWrapper';
 import { TopBlock } from './TopBlock';
 import { UserList } from './UserList/UserList';
-import styles from './ManageUsers.module.scss';
+import background from '@/assets/img/background_account_list.png';
+
+const bgWrapperStyle = {
+  backgroundSize: 'contain',
+  backgroundPosition: 'bottom',
+};
 
 export const ManageUsers = () => {
   return (
-    <div className={styles.wrapper}>
+    <PageWrapper bgUrl={background} bgStyle={bgWrapperStyle}>
       <TopBlock />
 
       <UserList />
-    </div>
+    </PageWrapper>
   );
 };

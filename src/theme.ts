@@ -1,11 +1,8 @@
-import { createMuiTheme } from '@material-ui/core';
+import { createMuiTheme, ThemeOptions } from '@material-ui/core';
 
-export const theme = createMuiTheme({
+const commonThemeSettings: ThemeOptions = {
   typography: {
     fontFamily: 'Rubik, sans-serif',
-    allVariants: {
-      color: '#212121',
-    },
 
     h1: {
       fontWeight: 700,
@@ -40,13 +37,55 @@ export const theme = createMuiTheme({
   palette: {
     error: {
       main: '#BA1919',
-      dark: '#DC3B3B',
+      dark: '#FF4545',
     },
     secondary: {
-      main: '#2EAC33',
+      main: '#47fd47',
+      dark: '#27D22E',
     },
     primary: {
       main: '#FFC700',
     },
   },
-});
+};
+const lightThemeSettings: ThemeOptions = {
+  palette: {
+    type: 'light',
+
+    background: {
+      paper: '#f5f5f5',
+      default: '#ffffff',
+    },
+
+    info: {
+      main: '#ffffff',
+    },
+
+    text: {
+      primary: '#212121',
+    },
+  },
+};
+
+const darkThemeSettings: ThemeOptions = {
+  palette: {
+    type: 'dark',
+
+    background: {
+      paper: '#393939',
+      default: '#0D0D0D',
+    },
+
+    info: {
+      main: '#212121',
+    },
+
+    text: {
+      primary: '#ffffff',
+    },
+  },
+};
+
+export const lightTheme = createMuiTheme(commonThemeSettings, lightThemeSettings);
+
+export const darkTheme = createMuiTheme(commonThemeSettings, darkThemeSettings);

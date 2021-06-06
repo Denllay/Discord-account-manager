@@ -6,15 +6,14 @@ chrome.runtime.sendMessage({
 
 chrome.runtime.onMessage.addListener((message: TChromeEvents, _, sendResponse) => {
   switch (message.action) {
-    case EnumChromeEvents.GET_USER_DATA: {
+    case EnumChromeEvents.GET_USER_DATA:
       const token = localStorage.getItem('token');
       const formattedToken = token && token.replace(/"/g, '');
 
       sendResponse(formattedToken);
       break;
-    }
 
-    case EnumChromeEvents.LOGIN_USER: {
+    case EnumChromeEvents.LOGIN_USER:
       const iframe = document.createElement('iframe');
 
       setInterval(() => {
@@ -27,7 +26,6 @@ chrome.runtime.onMessage.addListener((message: TChromeEvents, _, sendResponse) =
 
       sendResponse();
       break;
-    }
 
     default:
       console.error('Unrecognised message: ', message);
