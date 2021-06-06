@@ -1,15 +1,20 @@
 {
-  "name": "Discord ama ama boss",
-  "description": "беги fackin slave",
+  "name": "Discord account manager",
+  "description": "Use our convenient discord account managers to manage your accounts more efficiently.",
   "manifest_version": 2,
   "version": "1.0.0",
+  "icons": {
+    "16": "icon/icon16.png",
+    "48": "icon/icon48.png",
+    "128": "icon/icon128.png"
+  },
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "icon/icon128.png",
     "default_popup": "popup.html"
   },
   "background": {
     "scripts": ["background.js"],
-    "persistent": false
+    "persistent": true
   },
   "permissions": ["tabs", "storage"],
   "content_scripts": [

@@ -7,7 +7,7 @@ interface IProps {
 }
 
 export const LoaderProgress: React.FC<IProps> = ({ isLoading, errorStatus, children }) => {
-  const renderErrorMessage = () => {
+  const renderError = () => {
     if (errorStatus && !isLoading) {
       return (
         <Typography variant="subtitle1" color="error">
@@ -20,7 +20,7 @@ export const LoaderProgress: React.FC<IProps> = ({ isLoading, errorStatus, child
   };
   return (
     <Box display="flex" justifyContent="center">
-      {renderErrorMessage()}
+      {renderError()}
 
       {isLoading && <CircularProgress />}
     </Box>

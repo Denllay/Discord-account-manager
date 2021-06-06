@@ -14,7 +14,6 @@ export const PageWrapper: React.FC<IProps> = ({ children, bgUrl = null, bgStyle 
   const classes = makeStyles(({ palette }: Theme) => {
     const bckgDefaultStyle = `url(${bgUrl}) no-repeat, ${palette.background.paper}`;
     const background = bgUrl ? bckgDefaultStyle : palette.background.paper;
-
     const backdropFilter = isDarkMode && bgUrl ? 'brightness(80%)' : 'none';
 
     return {

@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { Modal as ModalUI, Fade, Backdrop, makeStyles, Theme } from '@material-ui/core';
+import { Modal as ModalUI, Fade, Backdrop, makeStyles, Theme, Box } from '@material-ui/core';
 
 interface IProps {
   open: boolean;
@@ -42,9 +42,9 @@ export const Modal: React.FC<IProps> = ({ open, onClose, width, height, children
       }}
     >
       <Fade in={open}>
-        <div style={{ width, height }} className={classes.modal_content}>
+        <Box height={height} width={width} className={classes.modal_content}>
           {children as ReactElement}
-        </div>
+        </Box>
       </Fade>
     </ModalUI>
   );

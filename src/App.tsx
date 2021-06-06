@@ -20,7 +20,6 @@ export const App = () => {
   const [page, setPage] = useState<TAppPages>('USER_INFO');
   const { appLoadedStatus, isDarkMode } = useTypedSelector((state) => state.user);
   const activeTheme = isDarkMode ? darkTheme : lightTheme;
-  console.log(activeTheme);
 
   const renderPage = () => {
     switch (page) {
