@@ -17,4 +17,4 @@ Go to the repository releases tab and download the latest version.
 * [Dizel](https://github.com/DizelBadCoder)
 
 ### Screenshots
-![screenshots](https://i.imgur.com/ShtcYsR.jpeg)
+![screenshots](https://i.imgur.com/aVcoigf.jpg)
