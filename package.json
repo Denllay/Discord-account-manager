@@ -19,6 +19,9 @@
     "@types/chrome": "^0.0.142",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
+    "@types/react-redux": "^7.1.16",
+    "@types/react-router-dom": "^5.1.7",
+    "@types/yup": "^0.29.11",
     "axios": "^0.21.1",
     "babel-loader": "^8.1.0",
     "copy-webpack-plugin": "^6.2.1",
@@ -41,12 +44,11 @@
   "dependencies": {
     "@material-ui/lab": "^4.0.0-alpha.58",
     "@svgr/webpack": "^5.5.0",
-    "@types/react-redux": "^7.1.16",
-    "@types/yup": "^0.29.11",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-hot-loader": "^4.13.0",
     "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
     "yup": "^0.32.9"
   }
 }

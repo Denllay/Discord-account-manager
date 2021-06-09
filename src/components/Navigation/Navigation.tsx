@@ -1,5 +1,5 @@
 import React, { SetStateAction } from 'react';
-import { IStyledTabsProps, TAppPages, TOnchangeTab } from '@/types/navigation';
+import { IStyledTabsProps, TAppPages, TOnchangeTab } from '@/types/app';
 import { Box, Tabs, withStyles } from '@material-ui/core';
 import { SwitchTheme } from '../SwitchTheme/SwitchTheme';
 import { NavTab } from './NavTab';

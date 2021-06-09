@@ -8,3 +8,7 @@ export interface IStyledTabProps {
   value: TAppPages;
   label: string;
 }
+
+export type TFormStatus = 'TOKEN' | 'BASIC' | 'CHOICE';
+
+export type TCopyAlertMode = 'success' | 'error';

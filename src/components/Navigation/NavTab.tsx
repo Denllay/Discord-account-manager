@@ -1,4 +1,4 @@
-import { IStyledTabProps } from '@/types/navigation';
+import { IStyledTabProps } from '@/types/app';
 import { createStyles, withStyles } from '@material-ui/core';
 import { Tab } from '@material-ui/core';
 import React from 'react';

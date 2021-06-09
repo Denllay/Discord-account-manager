@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Typography } from '@material-ui/core';
-import { PageWrapper } from '@/components/PageWrapper/PageWrapper';
+import { PageWrapper } from '@/components/common/Containers/PageWrapper';
 import IconGitHub from '@/assets/svg/iconGitHub.svg';
 import background from '@/assets/img/background_about_info.png';
 

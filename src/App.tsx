@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Navigation } from './components/Navigation/Navigation';
-import { TAppPages } from './types/navigation';
+import { TAppPages } from './types/app';
 import { CssBaseline } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import { UserInfo } from './pages/UserInfo/UserInfo';
-import { ManageUsers } from './pages/ManageUsers/ManageUsers';
+import { ManageUsers } from './pages/ManageUsers';
 import { useTypedDispatch } from './hook/useAppDispatch';
 import { getUserData } from './store/actions/getUserData';
 import { getUserList } from './store/actions/getUserList';
 import { useTypedSelector } from './hook/useTypedSelector';
-import { PreLoader } from './components/PreLoader/PreLoader';
-import { AboutInfo } from './pages/AboutInfo/AboutInfo';
+import { PreLoader } from './components/common/Loader/PreLoader';
+import { AboutInfo } from './pages/AboutInfo';
 import { darkTheme, lightTheme } from './theme';
 import { getTheme } from './store/actions/getTheme';
 

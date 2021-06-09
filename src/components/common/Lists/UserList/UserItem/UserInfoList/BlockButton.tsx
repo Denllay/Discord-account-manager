@@ -5,7 +5,7 @@ import { Modal } from '@/components/UIkit/Modal';
 import { useTypedDispatch } from '@/hook/useAppDispatch';
 import { deleteUser } from '@/store/actions/deleteUser';
 import { checkTokenInList } from '@/store/actions/checkTokenInList';
-import { FormChangeData } from '@/components/Modals/Form/FormChangeData';
+import { FormChangeData } from '@/components/common/Form/FormChangeData';
 import { loginUser } from '@/store/actions/loginUser';
 import { useCheckIsDicrod } from '@/hook/useCheckIsDicrod';
 import { ToolTipButton } from '@/components/UIkit/Button/ToolTipButton';

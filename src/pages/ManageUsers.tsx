@@ -1,7 +1,7 @@
 import React from 'react';
-import { PageWrapper } from '@/components/PageWrapper/PageWrapper';
-import { TopBlock } from './TopBlock';
-import { UserList } from './UserList/UserList';
+import { PageWrapper } from '@/components/common/Containers/PageWrapper';
+import { TopBlock } from '../components/ManageUsers/TopBlock';
+import { UserList } from '../components/common/Lists/UserList/UserList';
 import background from '@/assets/img/background_account_list.png';
 
 const bgWrapperStyle = {

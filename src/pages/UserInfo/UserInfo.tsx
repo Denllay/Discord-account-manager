@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { LoggedUser } from './LoggedUser/LoggedUser';
 import { TUserStatus } from '@/types/user';
-import { Unaccounted } from './Unaccounted/Unaccounted';
+import { Unaccounted } from './Unaccounted';
 import { useTypedSelector } from '@/hook/useTypedSelector';
 import { useCheckIsDicrod } from '@/hook/useCheckIsDicrod';
 

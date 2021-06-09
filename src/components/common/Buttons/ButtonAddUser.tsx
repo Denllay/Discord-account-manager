@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FormAddUser } from '@/components/Modals/Form/FormAddUser';
+import { FormAddUser } from '@/components/common/Form/FormAddUser';
 import { Modal } from '@/components/UIkit/Modal';
 import { Box, Button } from '@material-ui/core';
 

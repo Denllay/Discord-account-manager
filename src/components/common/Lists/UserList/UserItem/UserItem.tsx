@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, makeStyles, Theme, Typography } from '@material-ui/core';
-import { ButtonInfoMore } from '@/components/UIkit/Button/ButtonInfoMore';
+import { ButtonInfoMore } from '@/components/Buttons/ButtonInfoMore';
 import { IUserInfoList } from '@/types/userList';
 import { UserInfoList } from './UserInfoList/UserInfoList';
 import { useTypedSelector } from '@/hook/useTypedSelector';

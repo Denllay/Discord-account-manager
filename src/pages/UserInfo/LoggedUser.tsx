@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Typography, Box } from '@material-ui/core';
 import { useTypedSelector } from '@/hook/useTypedSelector';
-import { PageWrapper } from '@/components/PageWrapper/PageWrapper';
-import { ButtonAddUser } from './ButtonAddUser';
+import { PageWrapper } from '@/components/common/Containers/PageWrapper';
+import { ButtonAddUser } from '../../components/Buttons/ButtonAddUser';
 import { CopyPopup } from '@/components/UIkit/CopyPopup';
-import { Icon } from '@/components/UIkit/Icon';
+import { Icon } from '@/components/common/Icon';
 import IconCopy from '@/assets/svg/iconCopy.svg';
 import background from '@/assets/img/background_account_info.png';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography, Box } from '@material-ui/core';
-import { PageWrapper } from '../PageWrapper/PageWrapper';
+import { PageWrapper } from '../Containers/PageWrapper';
 import background from '@/assets/img/background_preloader.png';
 
 const flexWrapperStyle = {

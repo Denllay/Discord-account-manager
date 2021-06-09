@@ -2,12 +2,12 @@ import React from 'react';
 import { Box } from '@material-ui/core';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import { SubmitButton } from '@/components/UIkit/Button/SubmitButton';
-import { FormInput } from '@/components/UIkit/Input/FormInput';
+import { FormInput } from '@/components/common/Form/FormInput';
 import { IUserInfoList } from '@/types/userList';
 import { useTypedDispatch } from '@/hook/useAppDispatch';
 import { changeUserData } from '@/store/actions/changeUserData';
 import { useGetDataByToken } from '@/hook/useGetDataByToken';
-import { LoaderProgress } from '@/components/LoaderProgress/LoaderProgress';
+import { LoaderProgress } from '@/components/common/Loader/LoaderProgress';
 import * as Yup from 'yup';
 
 interface IProps {
