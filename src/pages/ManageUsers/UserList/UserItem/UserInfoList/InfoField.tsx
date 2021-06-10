@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Box, Typography, Button } from '@material-ui/core';
-import { CopyPopup } from '@/components/UIkit/CopyPopup';
-import { Icon } from '@/components/UIkit/Icon';
+import { Box, Typography } from '@material-ui/core';
+import { CopyPopup } from '@/components/common/CopyPopup';
+import { Icon } from '@/components/common/Icon';
 import IconCopy from '@/assets/svg/iconCopy.svg';
 
 interface IProps {

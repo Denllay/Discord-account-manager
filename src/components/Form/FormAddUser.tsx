@@ -1,13 +1,13 @@
 import React from 'react';
 import { Box, Typography } from '@material-ui/core';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
-import { SubmitButton } from '@/components/UIkit/Button/SubmitButton';
-import { FormInput } from '@/components/UIkit/Input/FormInput';
+import { SubmitButton } from '@/components/Button/SubmitButton';
+import { FormInput } from '@/components/Form/FormInput';
 import { useTypedDispatch } from '@/hook/useAppDispatch';
 import { addUser } from '@/store/actions/addUser';
 import { checkTokenInList } from '@/store/actions/checkTokenInList';
 import { useGetDataByToken } from '@/hook/useGetDataByToken';
-import { LoaderProgress } from '../../LoaderProgress/LoaderProgress';
+import { LoaderProgress } from '../LoaderProgress/LoaderProgress';
 import * as Yup from 'yup';
 
 interface IProps {
@@ -39,9 +39,9 @@ export const FormAddUser: React.FC<IProps> = ({ toggleModal, initialValues = def
     const formattedName = name || '-';
 
     if (!!userData) {
-      const { email, avatar } = userData!;
+      const { email, avatar, username } = userData!;
 
-      dispatch(addUser({ token, email, avatar, name: formattedName }));
+      dispatch(addUser({ token, email, avatar, username, name: formattedName }));
       dispatch(checkTokenInList(token));
 
       toggleModal();

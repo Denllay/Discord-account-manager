@@ -37,7 +37,7 @@ const useStyles = makeStyles(({ palette }: Theme) => ({
 export const UserInfoList: React.FC<IProps> = ({ data }) => {
   const dispatch = useTypedDispatch();
   const { isLoading, getDataByToken } = useGetDataByToken();
-  const { token, email, id, name } = data;
+  const { token, email, id, name, username } = data;
   const classes = useStyles();
 
   const classToUseRefresh = isLoading ? 'active_refresh' : 'default_refresh';
@@ -51,14 +51,18 @@ export const UserInfoList: React.FC<IProps> = ({ data }) => {
       title: 'email',
       data: email,
     },
+    {
+      title: 'user name',
+      data: username,
+    },
   ];
 
   const refreshData = async () => {
     if (!isLoading) {
       const userData = await getDataByToken(token);
-      const { avatar, email } = userData!;
+      const { avatar, email, username } = userData!;
 
-      dispatch(changeUserData({ avatar, email, token, id, name }));
+      dispatch(changeUserData({ avatar, email, token, id, name, username }));
     }
   };
 

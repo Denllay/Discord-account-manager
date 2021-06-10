@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box } from '@material-ui/core';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
-import { SubmitButton } from '@/components/UIkit/Button/SubmitButton';
-import { FormInput } from '@/components/UIkit/Input/FormInput';
+import { SubmitButton } from '@/components/Button/SubmitButton';
+import { FormInput } from '@/components/Form/FormInput';
 import { IUserInfoList } from '@/types/userList';
 import { useTypedDispatch } from '@/hook/useAppDispatch';
 import { changeUserData } from '@/store/actions/changeUserData';
@@ -20,7 +20,7 @@ interface ISetNewData {
   setSubmitting: (isSubmitting: boolean) => void;
 }
 
-type IFormValues = Omit<IUserInfoList, 'id' | 'avatar' | 'email'>;
+type IFormValues = Omit<IUserInfoList, 'id' | 'avatar' | 'email' | 'username'>;
 
 const formSchema: Yup.SchemaOf<Partial<IFormValues>> = Yup.object().shape({
   name: Yup.string().max(15, 'Maximum 15 characters'),
@@ -28,7 +28,10 @@ const formSchema: Yup.SchemaOf<Partial<IFormValues>> = Yup.object().shape({
   email: Yup.string().email('Enter email correctly'),
 });
 
-export const FormChangeData: React.FC<IProps> = ({ data: { id, avatar, email, ...initialValues }, toggleModal }) => {
+export const FormChangeData: React.FC<IProps> = ({
+  data: { id, avatar, username, email, ...initialValues },
+  toggleModal,
+}) => {
   const dispatch = useTypedDispatch();
   const { isLoading, errorStatus, getDataByToken } = useGetDataByToken();
 
@@ -43,7 +46,7 @@ export const FormChangeData: React.FC<IProps> = ({ data: { id, avatar, email, ..
   };
 
   const setNewName = ({ setSubmitting, ...userData }: ISetNewData) => {
-    dispatch(changeUserData({ id, avatar, email, ...userData }));
+    dispatch(changeUserData({ id, avatar, email, username, ...userData }));
 
     toggleModal();
     setSubmitting(false);
@@ -53,9 +56,9 @@ export const FormChangeData: React.FC<IProps> = ({ data: { id, avatar, email, ..
     const userData = await getDataByToken(token);
 
     if (!!userData) {
-      const { email, avatar, id } = userData!;
+      const { email, avatar, id, username } = userData!;
 
-      dispatch(changeUserData({ id, avatar, token, email, name }));
+      dispatch(changeUserData({ id, avatar, token, email, name, username }));
 
       toggleModal();
       setSubmitting(false);

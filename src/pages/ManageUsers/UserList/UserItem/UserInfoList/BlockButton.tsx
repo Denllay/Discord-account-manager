@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { IUserInfoList } from '@/types/userList';
 import { Box, Button, Typography } from '@material-ui/core';
-import { Modal } from '@/components/UIkit/Modal';
+import { Modal } from '@/components/common/Modal';
 import { useTypedDispatch } from '@/hook/useAppDispatch';
 import { deleteUser } from '@/store/actions/deleteUser';
 import { checkTokenInList } from '@/store/actions/checkTokenInList';
-import { FormChangeData } from '@/components/Modals/Form/FormChangeData';
+import { FormChangeData } from '@/components/Form/FormChangeData';
 import { loginUser } from '@/store/actions/loginUser';
 import { useCheckIsDicrod } from '@/hook/useCheckIsDicrod';
-import { ToolTipButton } from '@/components/UIkit/Button/ToolTipButton';
+import { ToolTipButton } from '@/components/Button/ToolTipButton';
 import { useFormatDataObj } from '@/hook/useFormatData';
 import { onMessageChromeEvent } from '@/store/actions/onMessageChromeEvent';
 

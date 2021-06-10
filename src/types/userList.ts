@@ -3,5 +3,6 @@ export interface IUserInfoList {
   token: string;
   name: string;
   avatar: string;
+  username: string;
   id: string;
 }

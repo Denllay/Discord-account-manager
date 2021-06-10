@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { FormAddUser } from '@/components/Modals/Form/FormAddUser';
-import { Modal } from '@/components/UIkit/Modal';
+import { FormAddUser } from '@/components/Form/FormAddUser';
+import { Modal } from '@/components/common/Modal';
 import { Box, Button } from '@material-ui/core';
 
 interface IProps {

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { ListButton } from '@/components/UIkit/Button/ListButton';
+import { ListButton } from '@/components/Button/ListButton';
 import { Box, Typography } from '@material-ui/core';
-import { Modal } from '@/components/UIkit/Modal';
-import { FormAddUser } from '@/components/Modals/Form/FormAddUser';
-import { Icon } from '@/components/UIkit/Icon';
+import { Modal } from '@/components/common/Modal';
+import { FormAddUser } from '@/components/Form/FormAddUser';
+import { Icon } from '@/components/common/Icon';
 import IconPlus from '@/assets/svg/iconPlus.svg';
 
 export const TopBlock = () => {

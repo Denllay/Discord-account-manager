@@ -8,6 +8,7 @@ export interface IAddUserPayload {
   name: string;
   email: string;
   avatar: string;
+  username: string;
 }
 export interface IUserListItem extends IAddUserPayload {
   id: string;
