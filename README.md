@@ -14,7 +14,8 @@ Go to the repository releases tab and download the latest version.
 ### Developers
 
 * [Denllay](https://github.com/Denllay)
+
+### Design
 * [Dizel](https://github.com/DizelBadCoder)
 
-### Screenshots
-![screenshots](https://i.imgur.com/aVcoigf.jpg)
+
